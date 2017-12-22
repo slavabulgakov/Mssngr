@@ -7,38 +7,38 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		DE64A3E11FE9893600E24C6C /* ChatsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE64A3E01FE9893600E24C6C /* ChatsViewModel.swift */; };
-		DE64A3E31FE98D5900E24C6C /* NetworkController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE64A3E21FE98D5900E24C6C /* NetworkController.swift */; };
-		DEA6FA621FD5D7F300EA64D7 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = DEA6FA611FD5D7F300EA64D7 /* GoogleService-Info.plist */; };
-		DEA6FA641FD5DB7D00EA64D7 /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEA6FA631FD5DB7D00EA64D7 /* AppCoordinator.swift */; };
-		DEA6FA671FD5DBD900EA64D7 /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEA6FA651FD5DBD900EA64D7 /* Coordinator.swift */; };
-		DEA6FA681FD5DBD900EA64D7 /* AppController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEA6FA661FD5DBD900EA64D7 /* AppController.swift */; };
-		DEA6FA6A1FD5DD0A00EA64D7 /* ChatsCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEA6FA691FD5DD0A00EA64D7 /* ChatsCoordinator.swift */; };
-		DEC8C5711FD5A00B00717919 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEC8C5701FD5A00B00717919 /* AppDelegate.swift */; };
-		DEC8C5731FD5A00B00717919 /* ChatsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEC8C5721FD5A00B00717919 /* ChatsViewController.swift */; };
-		DEC8C5761FD5A00B00717919 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DEC8C5741FD5A00B00717919 /* Main.storyboard */; };
-		DEC8C5781FD5A00B00717919 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DEC8C5771FD5A00B00717919 /* Assets.xcassets */; };
-		DEC8C57B1FD5A00B00717919 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DEC8C5791FD5A00B00717919 /* LaunchScreen.storyboard */; };
+		DEE87FD31FED0E550058D9F0 /* ChatsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEE87FCA1FED0E550058D9F0 /* ChatsViewController.swift */; };
+		DEE87FD41FED0E550058D9F0 /* ChatsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEE87FCB1FED0E550058D9F0 /* ChatsViewModel.swift */; };
+		DEE87FD51FED0E550058D9F0 /* ChatsCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEE87FCC1FED0E550058D9F0 /* ChatsCoordinator.swift */; };
+		DEE87FD61FED0E550058D9F0 /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEE87FCE1FED0E550058D9F0 /* AppCoordinator.swift */; };
+		DEE87FD71FED0E550058D9F0 /* NetworkController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEE87FCF1FED0E550058D9F0 /* NetworkController.swift */; };
+		DEE87FD81FED0E550058D9F0 /* AppController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEE87FD01FED0E550058D9F0 /* AppController.swift */; };
+		DEE87FD91FED0E550058D9F0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEE87FD11FED0E550058D9F0 /* AppDelegate.swift */; };
+		DEE87FDA1FED0E550058D9F0 /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEE87FD21FED0E550058D9F0 /* Coordinator.swift */; };
+		DEE87FE31FED0E6C0058D9F0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DEE87FDC1FED0E6C0058D9F0 /* Assets.xcassets */; };
+		DEE87FE41FED0E6C0058D9F0 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = DEE87FDD1FED0E6C0058D9F0 /* GoogleService-Info.plist */; };
+		DEE87FE51FED0E6C0058D9F0 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DEE87FDE1FED0E6C0058D9F0 /* LaunchScreen.storyboard */; };
+		DEE87FE61FED0E6C0058D9F0 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DEE87FE01FED0E6C0058D9F0 /* Main.storyboard */; };
 		E31058011A7B9465251EB95A /* Pods_Mssngr.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0D96E1EE2E522DA3488CAF0F /* Pods_Mssngr.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		0D96E1EE2E522DA3488CAF0F /* Pods_Mssngr.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Mssngr.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B917A6E56E01D3346BFC2A4B /* Pods-Mssngr.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Mssngr.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Mssngr/Pods-Mssngr.debug.xcconfig"; sourceTree = "<group>"; };
-		DE64A3E01FE9893600E24C6C /* ChatsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatsViewModel.swift; sourceTree = "<group>"; };
-		DE64A3E21FE98D5900E24C6C /* NetworkController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkController.swift; sourceTree = "<group>"; };
-		DEA6FA611FD5D7F300EA64D7 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
-		DEA6FA631FD5DB7D00EA64D7 /* AppCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCoordinator.swift; sourceTree = "<group>"; };
-		DEA6FA651FD5DBD900EA64D7 /* Coordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
-		DEA6FA661FD5DBD900EA64D7 /* AppController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppController.swift; sourceTree = "<group>"; };
-		DEA6FA691FD5DD0A00EA64D7 /* ChatsCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatsCoordinator.swift; sourceTree = "<group>"; };
 		DEC8C56D1FD5A00B00717919 /* Mssngr.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Mssngr.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		DEC8C5701FD5A00B00717919 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		DEC8C5721FD5A00B00717919 /* ChatsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatsViewController.swift; sourceTree = "<group>"; };
-		DEC8C5751FD5A00B00717919 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		DEC8C5771FD5A00B00717919 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		DEC8C57A1FD5A00B00717919 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
-		DEC8C57C1FD5A00B00717919 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		DEE87FCA1FED0E550058D9F0 /* ChatsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatsViewController.swift; sourceTree = "<group>"; };
+		DEE87FCB1FED0E550058D9F0 /* ChatsViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatsViewModel.swift; sourceTree = "<group>"; };
+		DEE87FCC1FED0E550058D9F0 /* ChatsCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatsCoordinator.swift; sourceTree = "<group>"; };
+		DEE87FCE1FED0E550058D9F0 /* AppCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppCoordinator.swift; sourceTree = "<group>"; };
+		DEE87FCF1FED0E550058D9F0 /* NetworkController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkController.swift; sourceTree = "<group>"; };
+		DEE87FD01FED0E550058D9F0 /* AppController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppController.swift; sourceTree = "<group>"; };
+		DEE87FD11FED0E550058D9F0 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		DEE87FD21FED0E550058D9F0 /* Coordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
+		DEE87FDC1FED0E6C0058D9F0 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		DEE87FDD1FED0E6C0058D9F0 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		DEE87FDF1FED0E6C0058D9F0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		DEE87FE11FED0E6C0058D9F0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		DEE87FE21FED0E6C0058D9F0 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F6771E0150743FAFF9C91185 /* Pods-Mssngr.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Mssngr.release.xcconfig"; path = "Pods/Target Support Files/Pods-Mssngr/Pods-Mssngr.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -74,7 +74,8 @@
 		DEC8C5641FD5A00B00717919 = {
 			isa = PBXGroup;
 			children = (
-				DEC8C56F1FD5A00B00717919 /* Mssngr */,
+				DEE87FC81FED0E550058D9F0 /* Code */,
+				DEE87FDB1FED0E6C0058D9F0 /* Resources */,
 				DEC8C56E1FD5A00B00717919 /* Products */,
 				CDA693655B5CEA3DE9F5846F /* Pods */,
 				2808D9565EA86D76344D366F /* Frameworks */,
@@ -89,24 +90,47 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
-		DEC8C56F1FD5A00B00717919 /* Mssngr */ = {
+		DEE87FC81FED0E550058D9F0 /* Code */ = {
 			isa = PBXGroup;
 			children = (
-				DEA6FA691FD5DD0A00EA64D7 /* ChatsCoordinator.swift */,
-				DE64A3E01FE9893600E24C6C /* ChatsViewModel.swift */,
-				DEC8C5721FD5A00B00717919 /* ChatsViewController.swift */,
-				DEA6FA661FD5DBD900EA64D7 /* AppController.swift */,
-				DEA6FA651FD5DBD900EA64D7 /* Coordinator.swift */,
-				DEC8C5701FD5A00B00717919 /* AppDelegate.swift */,
-				DEC8C5741FD5A00B00717919 /* Main.storyboard */,
-				DEC8C5771FD5A00B00717919 /* Assets.xcassets */,
-				DEC8C5791FD5A00B00717919 /* LaunchScreen.storyboard */,
-				DEC8C57C1FD5A00B00717919 /* Info.plist */,
-				DEA6FA611FD5D7F300EA64D7 /* GoogleService-Info.plist */,
-				DEA6FA631FD5DB7D00EA64D7 /* AppCoordinator.swift */,
-				DE64A3E21FE98D5900E24C6C /* NetworkController.swift */,
+				DEE87FC91FED0E550058D9F0 /* Chats */,
+				DEE87FCD1FED0E550058D9F0 /* Main */,
 			);
-			path = Mssngr;
+			path = Code;
+			sourceTree = "<group>";
+		};
+		DEE87FC91FED0E550058D9F0 /* Chats */ = {
+			isa = PBXGroup;
+			children = (
+				DEE87FCA1FED0E550058D9F0 /* ChatsViewController.swift */,
+				DEE87FCB1FED0E550058D9F0 /* ChatsViewModel.swift */,
+				DEE87FCC1FED0E550058D9F0 /* ChatsCoordinator.swift */,
+			);
+			path = Chats;
+			sourceTree = "<group>";
+		};
+		DEE87FCD1FED0E550058D9F0 /* Main */ = {
+			isa = PBXGroup;
+			children = (
+				DEE87FCE1FED0E550058D9F0 /* AppCoordinator.swift */,
+				DEE87FCF1FED0E550058D9F0 /* NetworkController.swift */,
+				DEE87FD01FED0E550058D9F0 /* AppController.swift */,
+				DEE87FD11FED0E550058D9F0 /* AppDelegate.swift */,
+				DEE87FD21FED0E550058D9F0 /* Coordinator.swift */,
+			);
+			path = Main;
+			sourceTree = "<group>";
+		};
+		DEE87FDB1FED0E6C0058D9F0 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				DEE87FDC1FED0E6C0058D9F0 /* Assets.xcassets */,
+				DEE87FDD1FED0E6C0058D9F0 /* GoogleService-Info.plist */,
+				DEE87FDE1FED0E6C0058D9F0 /* LaunchScreen.storyboard */,
+				DEE87FE01FED0E6C0058D9F0 /* Main.storyboard */,
+				DEE87FE21FED0E6C0058D9F0 /* Info.plist */,
+			);
+			path = Resources;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -171,10 +195,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				DEC8C57B1FD5A00B00717919 /* LaunchScreen.storyboard in Resources */,
-				DEA6FA621FD5D7F300EA64D7 /* GoogleService-Info.plist in Resources */,
-				DEC8C5781FD5A00B00717919 /* Assets.xcassets in Resources */,
-				DEC8C5761FD5A00B00717919 /* Main.storyboard in Resources */,
+				DEE87FE51FED0E6C0058D9F0 /* LaunchScreen.storyboard in Resources */,
+				DEE87FE31FED0E6C0058D9F0 /* Assets.xcassets in Resources */,
+				DEE87FE41FED0E6C0058D9F0 /* GoogleService-Info.plist in Resources */,
+				DEE87FE61FED0E6C0058D9F0 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -257,34 +281,34 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				DE64A3E31FE98D5900E24C6C /* NetworkController.swift in Sources */,
-				DEA6FA6A1FD5DD0A00EA64D7 /* ChatsCoordinator.swift in Sources */,
-				DEA6FA671FD5DBD900EA64D7 /* Coordinator.swift in Sources */,
-				DEA6FA681FD5DBD900EA64D7 /* AppController.swift in Sources */,
-				DEA6FA641FD5DB7D00EA64D7 /* AppCoordinator.swift in Sources */,
-				DEC8C5731FD5A00B00717919 /* ChatsViewController.swift in Sources */,
-				DEC8C5711FD5A00B00717919 /* AppDelegate.swift in Sources */,
-				DE64A3E11FE9893600E24C6C /* ChatsViewModel.swift in Sources */,
+				DEE87FDA1FED0E550058D9F0 /* Coordinator.swift in Sources */,
+				DEE87FD71FED0E550058D9F0 /* NetworkController.swift in Sources */,
+				DEE87FD61FED0E550058D9F0 /* AppCoordinator.swift in Sources */,
+				DEE87FD51FED0E550058D9F0 /* ChatsCoordinator.swift in Sources */,
+				DEE87FD41FED0E550058D9F0 /* ChatsViewModel.swift in Sources */,
+				DEE87FD91FED0E550058D9F0 /* AppDelegate.swift in Sources */,
+				DEE87FD31FED0E550058D9F0 /* ChatsViewController.swift in Sources */,
+				DEE87FD81FED0E550058D9F0 /* AppController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		DEC8C5741FD5A00B00717919 /* Main.storyboard */ = {
+		DEE87FDE1FED0E6C0058D9F0 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
-				DEC8C5751FD5A00B00717919 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
-		DEC8C5791FD5A00B00717919 /* LaunchScreen.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				DEC8C57A1FD5A00B00717919 /* Base */,
+				DEE87FDF1FED0E6C0058D9F0 /* Base */,
 			);
 			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+		DEE87FE01FED0E6C0058D9F0 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				DEE87FE11FED0E6C0058D9F0 /* Base */,
+			);
+			name = Main.storyboard;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -404,7 +428,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 29EDJQV24Y;
-				INFOPLIST_FILE = Mssngr/Info.plist;
+				INFOPLIST_FILE = Resources/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.slavabulgakov.Mssngr;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -420,7 +444,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 29EDJQV24Y;
-				INFOPLIST_FILE = Mssngr/Info.plist;
+				INFOPLIST_FILE = Resources/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.slavabulgakov.Mssngr;
 				PRODUCT_NAME = "$(TARGET_NAME)";
