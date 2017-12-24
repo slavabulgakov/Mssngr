@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		DE87BCB31FEEDBB7005670A9 /* ChatsCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE87BCB21FEEDBB7005670A9 /* ChatsCellViewModel.swift */; };
 		DEE87FD31FED0E550058D9F0 /* ChatsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEE87FCA1FED0E550058D9F0 /* ChatsViewController.swift */; };
 		DEE87FD41FED0E550058D9F0 /* ChatsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEE87FCB1FED0E550058D9F0 /* ChatsViewModel.swift */; };
 		DEE87FD51FED0E550058D9F0 /* ChatsCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEE87FCC1FED0E550058D9F0 /* ChatsCoordinator.swift */; };
@@ -19,12 +20,19 @@
 		DEE87FE41FED0E6C0058D9F0 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = DEE87FDD1FED0E6C0058D9F0 /* GoogleService-Info.plist */; };
 		DEE87FE51FED0E6C0058D9F0 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DEE87FDE1FED0E6C0058D9F0 /* LaunchScreen.storyboard */; };
 		DEE87FE61FED0E6C0058D9F0 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DEE87FE01FED0E6C0058D9F0 /* Main.storyboard */; };
+		DEE87FEC1FED0FBF0058D9F0 /* SignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEE87FEB1FED0FBF0058D9F0 /* SignInViewController.swift */; };
+		DEE87FEE1FED0FD10058D9F0 /* SignInViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEE87FED1FED0FD10058D9F0 /* SignInViewModel.swift */; };
+		DEE87FF01FED0FFC0058D9F0 /* SignInCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEE87FEF1FED0FFC0058D9F0 /* SignInCoordinator.swift */; };
+		DEE87FF51FED3ACE0058D9F0 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEE87FF41FED3ACE0058D9F0 /* SignUpViewController.swift */; };
+		DEE87FF71FED3AFD0058D9F0 /* SignUpViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEE87FF61FED3AFD0058D9F0 /* SignUpViewModel.swift */; };
+		DEE87FF91FED3D570058D9F0 /* SignUpCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEE87FF81FED3D570058D9F0 /* SignUpCoordinator.swift */; };
 		E31058011A7B9465251EB95A /* Pods_Mssngr.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0D96E1EE2E522DA3488CAF0F /* Pods_Mssngr.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		0D96E1EE2E522DA3488CAF0F /* Pods_Mssngr.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Mssngr.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B917A6E56E01D3346BFC2A4B /* Pods-Mssngr.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Mssngr.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Mssngr/Pods-Mssngr.debug.xcconfig"; sourceTree = "<group>"; };
+		DE87BCB21FEEDBB7005670A9 /* ChatsCellViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatsCellViewModel.swift; sourceTree = "<group>"; };
 		DEC8C56D1FD5A00B00717919 /* Mssngr.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Mssngr.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DEE87FCA1FED0E550058D9F0 /* ChatsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatsViewController.swift; sourceTree = "<group>"; };
 		DEE87FCB1FED0E550058D9F0 /* ChatsViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatsViewModel.swift; sourceTree = "<group>"; };
@@ -39,6 +47,12 @@
 		DEE87FDF1FED0E6C0058D9F0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		DEE87FE11FED0E6C0058D9F0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		DEE87FE21FED0E6C0058D9F0 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		DEE87FEB1FED0FBF0058D9F0 /* SignInViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignInViewController.swift; sourceTree = "<group>"; };
+		DEE87FED1FED0FD10058D9F0 /* SignInViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewModel.swift; sourceTree = "<group>"; };
+		DEE87FEF1FED0FFC0058D9F0 /* SignInCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInCoordinator.swift; sourceTree = "<group>"; };
+		DEE87FF41FED3ACE0058D9F0 /* SignUpViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
+		DEE87FF61FED3AFD0058D9F0 /* SignUpViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewModel.swift; sourceTree = "<group>"; };
+		DEE87FF81FED3D570058D9F0 /* SignUpCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpCoordinator.swift; sourceTree = "<group>"; };
 		F6771E0150743FAFF9C91185 /* Pods-Mssngr.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Mssngr.release.xcconfig"; path = "Pods/Target Support Files/Pods-Mssngr/Pods-Mssngr.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -93,6 +107,8 @@
 		DEE87FC81FED0E550058D9F0 /* Code */ = {
 			isa = PBXGroup;
 			children = (
+				DEE87FF31FED3ACE0058D9F0 /* SignUp */,
+				DEE87FEA1FED0FBF0058D9F0 /* SignIn */,
 				DEE87FC91FED0E550058D9F0 /* Chats */,
 				DEE87FCD1FED0E550058D9F0 /* Main */,
 			);
@@ -102,6 +118,7 @@
 		DEE87FC91FED0E550058D9F0 /* Chats */ = {
 			isa = PBXGroup;
 			children = (
+				DE87BCB21FEEDBB7005670A9 /* ChatsCellViewModel.swift */,
 				DEE87FCA1FED0E550058D9F0 /* ChatsViewController.swift */,
 				DEE87FCB1FED0E550058D9F0 /* ChatsViewModel.swift */,
 				DEE87FCC1FED0E550058D9F0 /* ChatsCoordinator.swift */,
@@ -131,6 +148,26 @@
 				DEE87FE21FED0E6C0058D9F0 /* Info.plist */,
 			);
 			path = Resources;
+			sourceTree = "<group>";
+		};
+		DEE87FEA1FED0FBF0058D9F0 /* SignIn */ = {
+			isa = PBXGroup;
+			children = (
+				DEE87FEB1FED0FBF0058D9F0 /* SignInViewController.swift */,
+				DEE87FED1FED0FD10058D9F0 /* SignInViewModel.swift */,
+				DEE87FEF1FED0FFC0058D9F0 /* SignInCoordinator.swift */,
+			);
+			path = SignIn;
+			sourceTree = "<group>";
+		};
+		DEE87FF31FED3ACE0058D9F0 /* SignUp */ = {
+			isa = PBXGroup;
+			children = (
+				DEE87FF41FED3ACE0058D9F0 /* SignUpViewController.swift */,
+				DEE87FF61FED3AFD0058D9F0 /* SignUpViewModel.swift */,
+				DEE87FF81FED3D570058D9F0 /* SignUpCoordinator.swift */,
+			);
+			path = SignUp;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -282,10 +319,17 @@
 			buildActionMask = 2147483647;
 			files = (
 				DEE87FDA1FED0E550058D9F0 /* Coordinator.swift in Sources */,
+				DEE87FF71FED3AFD0058D9F0 /* SignUpViewModel.swift in Sources */,
 				DEE87FD71FED0E550058D9F0 /* NetworkController.swift in Sources */,
 				DEE87FD61FED0E550058D9F0 /* AppCoordinator.swift in Sources */,
 				DEE87FD51FED0E550058D9F0 /* ChatsCoordinator.swift in Sources */,
+				DEE87FEE1FED0FD10058D9F0 /* SignInViewModel.swift in Sources */,
 				DEE87FD41FED0E550058D9F0 /* ChatsViewModel.swift in Sources */,
+				DEE87FF51FED3ACE0058D9F0 /* SignUpViewController.swift in Sources */,
+				DEE87FF91FED3D570058D9F0 /* SignUpCoordinator.swift in Sources */,
+				DE87BCB31FEEDBB7005670A9 /* ChatsCellViewModel.swift in Sources */,
+				DEE87FEC1FED0FBF0058D9F0 /* SignInViewController.swift in Sources */,
+				DEE87FF01FED0FFC0058D9F0 /* SignInCoordinator.swift in Sources */,
 				DEE87FD91FED0E550058D9F0 /* AppDelegate.swift in Sources */,
 				DEE87FD31FED0E550058D9F0 /* ChatsViewController.swift in Sources */,
 				DEE87FD81FED0E550058D9F0 /* AppController.swift in Sources */,

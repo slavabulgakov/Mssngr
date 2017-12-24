@@ -22,8 +22,9 @@ class AppCoordinator: Coordinator
     }
     
     func start() {
-        guard let chatsViewController = self.window.rootViewController as? ChatsViewController else { return }
-        chatsCoordinator = ChatsCoordinator(chatsViewController: chatsViewController, appController: appController)
+        guard let navigationController = self.window.rootViewController as? UINavigationController,
+        let viewController = navigationController.topViewController as? ChatsViewController else { return }
+        chatsCoordinator = ChatsCoordinator(viewController: viewController, appController: appController)
         chatsCoordinator?.start()
     }
 }
