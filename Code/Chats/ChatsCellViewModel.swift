@@ -20,6 +20,6 @@ class ChatsCellViewModel: Equatable {
     }
 
     var title: String {
-        return Array(chat.users ?? Set()).joined(separator: ", ")
+        return Array(chat.users).map({ $0.id }).joined(separator: ", ")
     }
 }

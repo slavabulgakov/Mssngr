@@ -8,6 +8,14 @@
 
 /* Begin PBXBuildFile section */
 		DE87BCB31FEEDBB7005670A9 /* ChatsCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE87BCB21FEEDBB7005670A9 /* ChatsCellViewModel.swift */; };
+		DE87BCB81FEFE48B005670A9 /* AddChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE87BCB71FEFE48B005670A9 /* AddChatViewController.swift */; };
+		DE87BCBA1FEFE4A7005670A9 /* AddChatCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE87BCB91FEFE4A7005670A9 /* AddChatCoordinator.swift */; };
+		DE87BCBC1FEFE4CC005670A9 /* AddChatViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE87BCBB1FEFE4CC005670A9 /* AddChatViewModel.swift */; };
+		DE87BCBE1FF00F3C005670A9 /* AddChatCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE87BCBD1FF00F3C005670A9 /* AddChatCellViewModel.swift */; };
+		DE87BCC01FF010B5005670A9 /* Models.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE87BCBF1FF010B5005670A9 /* Models.swift */; };
+		DEA016EF1FF546B5001CD074 /* ChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEA016EE1FF546B5001CD074 /* ChatViewController.swift */; };
+		DEA016F11FF546C3001CD074 /* ChatViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEA016F01FF546C3001CD074 /* ChatViewModel.swift */; };
+		DEA016F31FF546D6001CD074 /* ChatCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEA016F21FF546D6001CD074 /* ChatCoordinator.swift */; };
 		DEE87FD31FED0E550058D9F0 /* ChatsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEE87FCA1FED0E550058D9F0 /* ChatsViewController.swift */; };
 		DEE87FD41FED0E550058D9F0 /* ChatsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEE87FCB1FED0E550058D9F0 /* ChatsViewModel.swift */; };
 		DEE87FD51FED0E550058D9F0 /* ChatsCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEE87FCC1FED0E550058D9F0 /* ChatsCoordinator.swift */; };
@@ -33,6 +41,14 @@
 		0D96E1EE2E522DA3488CAF0F /* Pods_Mssngr.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Mssngr.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B917A6E56E01D3346BFC2A4B /* Pods-Mssngr.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Mssngr.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Mssngr/Pods-Mssngr.debug.xcconfig"; sourceTree = "<group>"; };
 		DE87BCB21FEEDBB7005670A9 /* ChatsCellViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatsCellViewModel.swift; sourceTree = "<group>"; };
+		DE87BCB71FEFE48B005670A9 /* AddChatViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddChatViewController.swift; sourceTree = "<group>"; };
+		DE87BCB91FEFE4A7005670A9 /* AddChatCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddChatCoordinator.swift; sourceTree = "<group>"; };
+		DE87BCBB1FEFE4CC005670A9 /* AddChatViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddChatViewModel.swift; sourceTree = "<group>"; };
+		DE87BCBD1FF00F3C005670A9 /* AddChatCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddChatCellViewModel.swift; sourceTree = "<group>"; };
+		DE87BCBF1FF010B5005670A9 /* Models.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Models.swift; sourceTree = "<group>"; };
+		DEA016EE1FF546B5001CD074 /* ChatViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatViewController.swift; sourceTree = "<group>"; };
+		DEA016F01FF546C3001CD074 /* ChatViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatViewModel.swift; sourceTree = "<group>"; };
+		DEA016F21FF546D6001CD074 /* ChatCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatCoordinator.swift; sourceTree = "<group>"; };
 		DEC8C56D1FD5A00B00717919 /* Mssngr.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Mssngr.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DEE87FCA1FED0E550058D9F0 /* ChatsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatsViewController.swift; sourceTree = "<group>"; };
 		DEE87FCB1FED0E550058D9F0 /* ChatsViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatsViewModel.swift; sourceTree = "<group>"; };
@@ -85,6 +101,27 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		DE87BCB61FEFE48B005670A9 /* AddChat */ = {
+			isa = PBXGroup;
+			children = (
+				DE87BCB71FEFE48B005670A9 /* AddChatViewController.swift */,
+				DE87BCB91FEFE4A7005670A9 /* AddChatCoordinator.swift */,
+				DE87BCBB1FEFE4CC005670A9 /* AddChatViewModel.swift */,
+				DE87BCBD1FF00F3C005670A9 /* AddChatCellViewModel.swift */,
+			);
+			path = AddChat;
+			sourceTree = "<group>";
+		};
+		DEA016ED1FF546B5001CD074 /* Chat */ = {
+			isa = PBXGroup;
+			children = (
+				DEA016EE1FF546B5001CD074 /* ChatViewController.swift */,
+				DEA016F01FF546C3001CD074 /* ChatViewModel.swift */,
+				DEA016F21FF546D6001CD074 /* ChatCoordinator.swift */,
+			);
+			path = Chat;
+			sourceTree = "<group>";
+		};
 		DEC8C5641FD5A00B00717919 = {
 			isa = PBXGroup;
 			children = (
@@ -107,6 +144,8 @@
 		DEE87FC81FED0E550058D9F0 /* Code */ = {
 			isa = PBXGroup;
 			children = (
+				DEA016ED1FF546B5001CD074 /* Chat */,
+				DE87BCB61FEFE48B005670A9 /* AddChat */,
 				DEE87FF31FED3ACE0058D9F0 /* SignUp */,
 				DEE87FEA1FED0FBF0058D9F0 /* SignIn */,
 				DEE87FC91FED0E550058D9F0 /* Chats */,
@@ -134,6 +173,7 @@
 				DEE87FD01FED0E550058D9F0 /* AppController.swift */,
 				DEE87FD11FED0E550058D9F0 /* AppDelegate.swift */,
 				DEE87FD21FED0E550058D9F0 /* Coordinator.swift */,
+				DE87BCBF1FF010B5005670A9 /* Models.swift */,
 			);
 			path = Main;
 			sourceTree = "<group>";
@@ -320,19 +360,27 @@
 			files = (
 				DEE87FDA1FED0E550058D9F0 /* Coordinator.swift in Sources */,
 				DEE87FF71FED3AFD0058D9F0 /* SignUpViewModel.swift in Sources */,
+				DEA016EF1FF546B5001CD074 /* ChatViewController.swift in Sources */,
 				DEE87FD71FED0E550058D9F0 /* NetworkController.swift in Sources */,
 				DEE87FD61FED0E550058D9F0 /* AppCoordinator.swift in Sources */,
+				DEA016F31FF546D6001CD074 /* ChatCoordinator.swift in Sources */,
 				DEE87FD51FED0E550058D9F0 /* ChatsCoordinator.swift in Sources */,
 				DEE87FEE1FED0FD10058D9F0 /* SignInViewModel.swift in Sources */,
 				DEE87FD41FED0E550058D9F0 /* ChatsViewModel.swift in Sources */,
 				DEE87FF51FED3ACE0058D9F0 /* SignUpViewController.swift in Sources */,
+				DE87BCBA1FEFE4A7005670A9 /* AddChatCoordinator.swift in Sources */,
 				DEE87FF91FED3D570058D9F0 /* SignUpCoordinator.swift in Sources */,
 				DE87BCB31FEEDBB7005670A9 /* ChatsCellViewModel.swift in Sources */,
+				DE87BCBE1FF00F3C005670A9 /* AddChatCellViewModel.swift in Sources */,
 				DEE87FEC1FED0FBF0058D9F0 /* SignInViewController.swift in Sources */,
 				DEE87FF01FED0FFC0058D9F0 /* SignInCoordinator.swift in Sources */,
 				DEE87FD91FED0E550058D9F0 /* AppDelegate.swift in Sources */,
 				DEE87FD31FED0E550058D9F0 /* ChatsViewController.swift in Sources */,
+				DE87BCB81FEFE48B005670A9 /* AddChatViewController.swift in Sources */,
+				DE87BCBC1FEFE4CC005670A9 /* AddChatViewModel.swift in Sources */,
 				DEE87FD81FED0E550058D9F0 /* AppController.swift in Sources */,
+				DEA016F11FF546C3001CD074 /* ChatViewModel.swift in Sources */,
+				DE87BCC01FF010B5005670A9 /* Models.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

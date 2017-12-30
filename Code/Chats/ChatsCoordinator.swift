@@ -14,6 +14,8 @@ import CocoaLumberjack
 class ChatsCoordinator: Coordinator {
     let viewController: ChatsViewController
     var appController: AppController
+    var selectedChat: Chat?
+    
 
     fileprivate let token: Lifetime.Token
     fileprivate let lifetime: Lifetime
@@ -35,6 +37,11 @@ class ChatsCoordinator: Coordinator {
             }.take(during: lifetime).observeValues { [weak self] _ in
                 self?.viewController.performSegue(withIdentifier: "ChatsToSignIn", sender: nil)
         }
+        
+        viewModel.chatSelectSignal.take(during: lifetime).observeValues { [weak self] chat in
+            self?.selectedChat = chat
+            self?.viewController.performSegue(withIdentifier: "ChatsToChat", sender: nil)
+        }
     }
 }
 
@@ -48,6 +55,11 @@ extension ChatsCoordinator: CoordinationDelegate {
         switch destination {
         case let controller as SignInViewController:
             coordinator = SignInCoordinator(viewController: controller, appController: appController)
+        case let controller as AddChatViewController:
+            coordinator = AddChatCoordinator(viewController: controller, appController: appController)
+        case let controller as ChatViewController:
+            guard let chat = self.selectedChat else { break }
+            coordinator = ChatCoordinator(viewController: controller, appController: appController, state: .exist(chat))
         default:
             break
         }

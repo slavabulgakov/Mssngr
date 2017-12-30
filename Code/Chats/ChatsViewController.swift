@@ -19,18 +19,10 @@ class ChatsViewController: UIViewController, Coordinated {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        viewDidLoadObserver.send(value: Void())
-        bindViewModel()
-    }
-    
-    func bindViewModel() {
-        viewModel?.chatsProducer?.take(during: self.reactive.lifetime).startWithValues({ [weak self] chats in
+        viewDidLoadObserver.send(value: ())
+        viewModel?.load { [weak self] in
             self?.tableView.reloadData()
-        })
-    }
-    
-    @IBAction func addChatTap(_ sender: UIButton) {
-        viewModel?.addChat()
+        }
     }
 }
 
@@ -49,9 +41,9 @@ extension ChatsViewController: UITableViewDelegate, UITableViewDataSource {
         return cell
     }
     
-//    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-//        viewModel?.select(index: indexPath.row)
-//    }
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        viewModel?.select(index: indexPath.row)
+    }
 }
 
 extension UITableViewCell {
