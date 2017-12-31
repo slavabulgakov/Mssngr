@@ -20,7 +20,7 @@ class ChatsViewController: UIViewController, Coordinated {
     override func viewDidLoad() {
         super.viewDidLoad()
         viewDidLoadObserver.send(value: ())
-        viewModel?.load { [weak self] in
+        viewModel?.chatsProducer()?.take(during: reactive.lifetime).startWithValues { [weak self] in
             self?.tableView.reloadData()
         }
     }

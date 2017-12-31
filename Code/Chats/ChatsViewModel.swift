@@ -15,27 +15,26 @@ class ChatsViewModel {
     fileprivate var _chats = [ChatsCellViewModel]()
     fileprivate let chatSelectObserver: Signal<Chat, NoError>.Observer
     let chatSelectSignal: Signal<Chat, NoError>
-    
+
     init(appController: AppController) {
         self.appController = appController
         (chatSelectSignal, chatSelectObserver) = Signal<Chat, NoError>.pipe()
     }
-    
-    func load(block: @escaping () -> ()) {
-        appController?.network?.chats { [weak self] chats in
-            self?._chats = chats.map { ChatsCellViewModel(chat: $0) }
-            block()
-        }
+
+    func chatsProducer() -> SignalProducer<(), NoError>? {
+        return appController?.network?.chatsProducer().on {
+            self._chats += [ChatsCellViewModel(chat: $0)]
+        }.debounce(0.1, on: QueueScheduler.main).map { _ in return () }
     }
-    
+
     var numberOfRows: Int {
         return _chats.count
     }
-    
+
     func item(atIndex index: Int) -> ChatsCellViewModel {
         return _chats[index]
     }
-    
+
     func select(index: Int) {
         chatSelectObserver.send(value: _chats[index].chat)
     }

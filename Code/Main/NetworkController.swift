@@ -16,7 +16,7 @@ import Result
 typealias FirebaseUser = FirebaseAuth.User
 
 class NetworkController {
-    fileprivate lazy var reference: DatabaseReference = Database.database().reference()
+    fileprivate var reference: DatabaseReference = Database.database().reference()
     var authStateDidChangeListenerHandle: AuthStateDidChangeListenerHandle?
     let semaphore = DispatchSemaphore(value: 0)
     let queue = DispatchQueue(label: "com.slavabulgakov.Mssngr.NetworkQueue", qos: .utility, attributes: .concurrent)
@@ -55,7 +55,7 @@ class NetworkController {
             self.reference.child("users/\(uid)/email").setValue(email)
         }
     }
-    
+
     func messages(chat: Chat) -> SignalProducer<Message, NoError> {
         return SignalProducer<Message, NoError> { [unowned self] observer, _ in
             self.reference.child("chats/\(chat.id)/messages").observe(.childAdded) { snapshot in
@@ -80,7 +80,7 @@ class NetworkController {
         newMessageRef.setValue(firstMessage.text)
         return chat
     }
-    
+
     func sendMessage(chat: Chat, message: Message) {
         let newMessageRef = reference.child("chats/\(chat.id)/messages").childByAutoId()
         newMessageRef.setValue(message.text)
@@ -92,48 +92,49 @@ class NetworkController {
                 var users = [User]()
                 for data in snapshot.children {
                     guard let s = data as? DataSnapshot, let user = User.validate(key: s.key, value: s.value),
-                    user.email != Auth.auth().currentUser?.email
+                        user.email != Auth.auth().currentUser?.email
                         else { return }
                     users += [user]
                 }
                 block(users)
         }
     }
+
+    fileprivate func loadUsers(byUsersIds usersIds: Set<String>) -> [String: User] {
+        let group = DispatchGroup()
+        var users = [String: User]()
+        for userId in usersIds {
+            group.enter()
+            reference.child("users/\(userId)").observeSingleEvent(of: .value) { snapshot in
+                defer { group.leave() }
+                guard let user = User.validate(key: snapshot.key, value: snapshot.value) else { return }
+                users[user.id] = user
+            }
+        }
+        group.wait()
+        return users
+    }
     
-    func chats(block : @escaping ([Chat]) -> ()) {
-        asyncRequest(background: { () -> [Chat] in
-            let snapshot: DataSnapshot? = self.syncRequest {
-                guard let uid = Auth.auth().currentUser?.uid else { return }
-                let chatsQuery = self.reference.child("chats").queryOrdered(byChild: "users/\(uid)").queryEqual(toValue: true)
-                chatsQuery.observeSingleEvent(of: .value, with: $0)
+    var chatsQuery: DatabaseQuery? {
+        guard let uid = Auth.auth().currentUser?.uid else { return nil }
+        return self.reference.child("chats").queryOrdered(byChild: "users/\(uid)").queryEqual(toValue: true)
+    }
+
+    func chatsProducer() -> SignalProducer<Chat, NoError> {
+        return SignalProducer<ChatWithoutUsers, NoError> { [unowned self] observer, _ in
+            self.chatsQuery?.observe(.childAdded) { snapshot in
+                guard let chat = ChatWithoutUsers.validate(key: snapshot.key, value: snapshot.value) else { return }
+                observer.send(value: chat)
             }
-            var chats = [ChatWithoutUsers]()
-            var usersIds = Set<String>()
-            guard let children = snapshot?.children else { return [] }
-            for data in children {
-                guard let s = data as? DataSnapshot, let chat = ChatWithoutUsers.validate(key: s.key, value: s.value)
-                    else { continue }
-                chats += [chat]
-                usersIds = usersIds.union(chat.users)
-            }
-            
-            let group = DispatchGroup()
-            var usersDict = [String: User]()
-            for userId in usersIds {
-                group.enter()
-                self.reference.child("users/\(userId)").observeSingleEvent(of: .value) { snapshot in
-                    defer { group.leave() }
-                    guard let user = User.validate(key: snapshot.key, value: snapshot.value) else { return }
-                    usersDict[user.id] = user
+        }.flatMap(.merge) { chat -> SignalProducer<Chat, NoError> in
+            return SignalProducer<Chat, NoError> { [unowned self] observer, _ in
+                self.asyncRequest(background: {
+                    return self.loadUsers(byUsersIds: chat.users).map { $0.value }
+                }) { users in
+                    observer.send(value: Chat(id: chat.id, users: Set(users), messages: chat.messages))
                 }
             }
-            group.wait()
-            
-            return chats.map { chat in
-                let users = chat.users.flatMap { usersDict[$0] }
-                return Chat(id: chat.id, users: Set(users), messages: chat.messages)
-            }
-        }) { block($0) }
+        }
     }
 }
 
@@ -147,7 +148,7 @@ extension NetworkController {
         semaphore.wait()
         return response
     }
-    
+
     func asyncRequest<T>(background: @escaping () -> (T), main: @escaping (T) -> ()) {
         queue.async {
             let response = background()

@@ -67,8 +67,8 @@ class ChatWithoutUsers {
     }
     
     static func validate(key: String, value: Any?) -> ChatWithoutUsers? {
-        guard let dict = value as? [String: Any], let users = dict["users"] as? [String: Bool],
-        let messages = dict["messages"] as? [String: String] else { return nil }
-        return ChatWithoutUsers(id: key, users: Set(users.map({ $0.key })), messages: messages.map { Message(text: $0.value) })
+        guard let dict = value as? [String: Any], let users = dict["users"] as? [String: Bool] else { return nil }
+        let messages = (dict["messages"] as? [String: String])?.map { Message(text: $0.value) } ?? []
+        return ChatWithoutUsers(id: key, users: Set(users.map({ $0.key })), messages: messages)
     }
 }
