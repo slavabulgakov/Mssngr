@@ -12,6 +12,7 @@ import FirebaseAuth
 import ReactiveSwift
 import ReactiveCocoa
 import Result
+import ObjectMapper
 
 typealias FirebaseUser = FirebaseAuth.User
 
@@ -59,14 +60,17 @@ class NetworkController {
     func messages(chat: Chat) -> SignalProducer<Message, NoError> {
         return SignalProducer<Message, NoError> { [unowned self] observer, _ in
             self.reference.child("chats/\(chat.id)/messages").observe(.childAdded) { snapshot in
-                guard let text = snapshot.value as? String else { return }
-                observer.send(value: Message(text: text))
+                guard let message = Message(snapshot: snapshot), let currentUserId = Auth.auth().currentUser?.uid
+                    else { return }
+                message.isIncoming = currentUserId != message.userId
+                observer.send(value: message)
             }
         }
     }
 
-    func addChat(forUsers users: Set<User>, firstMessage: Message) -> Chat? {
+    func addChat(forUsers users: Set<User>, firstMessageText: String) -> Chat? {
         guard let currentUser = Auth.auth().currentUser else { return nil }
+        let firstMessage = Message(text: firstMessageText, userId: currentUser.uid)
         let mutableUsers = users.union(Set([User(user: currentUser)]))
         let newChatRef = reference.child("chats").childByAutoId()
         var usersIds = [String: Bool]()
@@ -74,16 +78,21 @@ class NetworkController {
             usersIds[user.id] = true
             reference.child("users/\(user.id)/chats/\(newChatRef.key)").setValue(true)
         }
-        newChatRef.setValue(["users": usersIds])
+        saveMessage(message: firstMessage, chatRef: newChatRef)
+        newChatRef.child("users").setValue(usersIds)
         let chat = Chat(id: newChatRef.key, users: mutableUsers, messages: [firstMessage])
-        let newMessageRef = newChatRef.child("messages").childByAutoId()
-        newMessageRef.setValue(firstMessage.text)
         return chat
     }
 
-    func sendMessage(chat: Chat, message: Message) {
-        let newMessageRef = reference.child("chats/\(chat.id)/messages").childByAutoId()
-        newMessageRef.setValue(message.text)
+    func sendMessage(chat: Chat, messageText: String) {
+        guard let currentUser = Auth.auth().currentUser else { return }
+        let message = Message(text: messageText, userId: currentUser.uid)
+        saveMessage(message: message, chatRef: reference.child("chats/\(chat.id)"))
+    }
+    
+    fileprivate func saveMessage(message: Message, chatRef: DatabaseReference) {
+        let newMessageRef = chatRef.child("messages").childByAutoId()
+        newMessageRef.setValue(message.toJSON())
     }
 
     func searchUsers(byEmail email: String, block: @escaping ([User]) -> Void) {
@@ -91,7 +100,7 @@ class NetworkController {
             .queryEnding(atValue: email + "\u{f8ff}").observeSingleEvent(of: .value) { snapshot in
                 var users = [User]()
                 for data in snapshot.children {
-                    guard let s = data as? DataSnapshot, let user = User.validate(key: s.key, value: s.value),
+                    guard let s = data as? DataSnapshot, let user = User(snapshot: s),
                         user.email != Auth.auth().currentUser?.email
                         else { return }
                     users += [user]
@@ -107,7 +116,7 @@ class NetworkController {
             group.enter()
             reference.child("users/\(userId)").observeSingleEvent(of: .value) { snapshot in
                 defer { group.leave() }
-                guard let user = User.validate(key: snapshot.key, value: snapshot.value) else { return }
+                guard let user = User(snapshot: snapshot) else { return }
                 users[user.id] = user
             }
         }
@@ -123,7 +132,7 @@ class NetworkController {
     func chatsProducer() -> SignalProducer<Chat, NoError> {
         return SignalProducer<ChatWithoutUsers, NoError> { [unowned self] observer, _ in
             self.chatsQuery?.observe(.childAdded) { snapshot in
-                guard let chat = ChatWithoutUsers.validate(key: snapshot.key, value: snapshot.value) else { return }
+                guard let chat = ChatWithoutUsers(snapshot: snapshot) else { return }
                 observer.send(value: chat)
             }
         }.flatMap(.merge) { chat -> SignalProducer<Chat, NoError> in
@@ -131,7 +140,7 @@ class NetworkController {
                 self.asyncRequest(background: {
                     return self.loadUsers(byUsersIds: chat.users).map { $0.value }
                 }) { users in
-                    observer.send(value: Chat(id: chat.id, users: Set(users), messages: chat.messages))
+                    observer.send(value: Chat(id: chat.id, users: Set(users), messages: chat.arrayMessages))
                 }
             }
         }
@@ -162,5 +171,21 @@ extension NetworkController {
 extension User {
     convenience init(user: FirebaseUser) {
         self.init(id: user.uid, email: user.email)
+    }
+}
+
+extension BaseMappable {
+    static var firebaseIdKey : String {
+        get {
+            return "FirebaseIdKey"
+        }
+    }
+    init?(snapshot: DataSnapshot) {
+        guard var json = snapshot.value as? [String: Any] else {
+            return nil
+        }
+        json[Self.firebaseIdKey] = snapshot.key as Any
+        
+        self.init(JSON: json)
     }
 }

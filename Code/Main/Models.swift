@@ -7,35 +7,54 @@
 //
 
 import Foundation
+import ObjectMapper
 
-class User: Equatable, Hashable {
-    var email: String?
+class User: ImmutableMappable, Equatable, Hashable {
     var id: String
-    
+    var email: String?
+
+    required init(map: Map) throws {
+        id = try map.value(User.firebaseIdKey)
+        email = try? map.value("email")
+    }
+
     init(id: String, email: String?) {
         self.id = id
         self.email = email
     }
-    
-    static func validate(key: String, value: Any?) -> User? {
-        guard let dict = value as? [AnyHashable: Any], let email = dict["email"] as? String else { return nil }
-        return User(id: key, email: email)
+
+    func mapping(map: Map) {
+        id >>> map[User.firebaseIdKey]
+        email >>> map["email"]
     }
-    
-    static func ==(lhs: User, rhs: User) -> Bool {
+
+    static func == (lhs: User, rhs: User) -> Bool {
         return lhs.id == rhs.id
     }
-    
+
     var hashValue: Int {
         return id.hashValue
     }
 }
 
-class Message {
-    let text: String
-    
-    init(text: String) {
+class Message: ImmutableMappable {
+    var text: String
+    var userId: String
+    var isIncoming = false
+
+    required init(map: Map) throws {
+        text = try map.value("text")
+        userId = try map.value("userId")
+    }
+
+    init(text: String, userId: String) {
         self.text = text
+        self.userId = userId
+    }
+
+    func mapping(map: Map) {
+        text >>> map["text"]
+        userId >>> map["userId"]
     }
 }
 
@@ -43,32 +62,53 @@ class Chat: Equatable {
     var id: String
     var users: Set<User>
     var messages: [Message]
-    
+
     init(id: String, users: Set<User>, messages: [Message]) {
         self.id = id
         self.users = users
         self.messages = messages
     }
-    
-    static func ==(lhs: Chat, rhs: Chat) -> Bool {
+
+    static func == (lhs: Chat, rhs: Chat) -> Bool {
         return lhs.id == rhs.id
     }
 }
 
-class ChatWithoutUsers {
+class ChatWithoutUsers: ImmutableMappable {
     var id: String
     var users: Set<String>
-    var messages: [Message]
-    
-    init(id: String, users: Set<String>, messages: [Message]) {
-        self.id = id
-        self.users = users
-        self.messages = messages
+    var messages: [String: Message]
+    var arrayMessages: [Message] {
+        return Array(messages.values)
     }
-    
-    static func validate(key: String, value: Any?) -> ChatWithoutUsers? {
-        guard let dict = value as? [String: Any], let users = dict["users"] as? [String: Bool] else { return nil }
-        let messages = (dict["messages"] as? [String: String])?.map { Message(text: $0.value) } ?? []
-        return ChatWithoutUsers(id: key, users: Set(users.map({ $0.key })), messages: messages)
+
+    required init(map: Map) throws {
+        id = try map.value(ChatWithoutUsers.firebaseIdKey)
+        users = try map.value("users", using: SetKeyTransform())
+        messages = try map.value("messages")
+    }
+
+    func mapping(map: Map) {
+        id >>> map[ChatWithoutUsers.firebaseIdKey]
+        users >>> (map["users"], SetKeyTransform())
+        messages >>> map["messages"]
+    }
+}
+
+class SetKeyTransform: TransformType {
+    typealias Object = Set<String>
+    typealias JSON = [String: Bool]
+
+    func transformFromJSON(_ value: Any?) -> Set<String>? {
+        guard let v = value as? JSON else { return Set<String>() }
+        return Set(v.keys)
+    }
+
+    func transformToJSON(_ value: Set<String>?) -> [String: Bool]? {
+        return value?.reduce([String: Bool](), { (result, string) -> [String: Bool] in
+                var dict = result
+                dict[string] = true
+                return dict
+            })
     }
 }

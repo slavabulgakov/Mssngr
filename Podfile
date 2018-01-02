@@ -15,4 +15,5 @@ target 'Mssngr' do
 	pod 'Firebase/Storage'
 	pod 'Firebase/Auth'
 	pod 'Firebase/Database'
+    pod 'ObjectMapper', '~> 3.1.0'
 end

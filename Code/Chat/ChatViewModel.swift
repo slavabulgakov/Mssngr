@@ -9,15 +9,19 @@
 import Foundation
 import ReactiveSwift
 import Result
+import Chatto
+import ChattoAdditions
 
 class ChatViewModel {
     let appController: AppController
     var state: State
-    var text = ""
-    fileprivate let textObserver: Signal<Void, NoError>.Observer
-    let textSignal: Signal<Void, NoError>
     fileprivate let token: Lifetime.Token
     fileprivate let lifetime: Lifetime
+    
+    var nextMessageId: Int = 0
+    let preferredMaxWindowSize = 500
+    var slidingWindow: SlidingDataSource<ChatItemProtocol>
+    weak var delegate: ChatDataSourceDelegateProtocol?
     
     enum State {
         case new(Set<User>)
@@ -29,27 +33,68 @@ class ChatViewModel {
         self.state = state
         token = Lifetime.Token()
         lifetime = Lifetime(token)
-        (textSignal, textObserver) = Signal<Void, NoError>.pipe()
-        bindTextIfCan()
+        slidingWindow = SlidingDataSource(items: [], pageSize: 50)
+        bindChatIfCan()
     }
     
-    func bindTextIfCan() {
+    func bindChatIfCan() {
         guard case .exist(let chat) = state else { return }
         appController.network?.messages(chat: chat).take(during: lifetime).startWithValues { [weak self] message in
-            self?.text += message.text + "\n"
-            self?.textObserver.send(value: ())
+            self?.addTextMessage(message.text, isIncoming: message.isIncoming)
         }
     }
     
-    func sendMessage(text: String) {
-        let message = Message(text: text)
+    func sendMessage(_ message: MessageModelProtocol) {
+        //        self.fakeMessageStatus(message)
+    }
+    
+    func send(text: String) {
         switch state {
         case .new(let users):
-            guard let chat = appController.network?.addChat(forUsers: users, firstMessage: message) else { break }
+            guard let chat = appController.network?.addChat(forUsers: users, firstMessageText: text) else { break }
             state = .exist(chat)
-            bindTextIfCan()
+            bindChatIfCan()
         case .exist(let chat):
-            appController.network?.sendMessage(chat: chat, message: message)
+            appController.network?.sendMessage(chat: chat, messageText: text)
         }
+    }
+    
+    fileprivate func addTextMessage(_ text: String, isIncoming: Bool) {
+        let uid = "\(self.nextMessageId)"
+        self.nextMessageId += 1
+        let message = createTextMessageModel(uid, text: text, isIncoming: isIncoming)
+        self.slidingWindow.insertItem(message, position: .bottom)
+        self.delegate?.chatDataSourceDidUpdate(self)
+    }
+}
+
+extension ChatViewModel: ChatDataSourceProtocol {
+    var hasMoreNext: Bool {
+        return self.slidingWindow.hasMore()
+    }
+    
+    var hasMorePrevious: Bool {
+        return self.slidingWindow.hasPrevious()
+    }
+    
+    var chatItems: [ChatItemProtocol] {
+        return self.slidingWindow.itemsInWindow
+    }
+    
+    func loadNext() {
+        self.slidingWindow.loadNext()
+        self.slidingWindow.adjustWindow(focusPosition: 1, maxWindowSize: self.preferredMaxWindowSize)
+        self.delegate?.chatDataSourceDidUpdate(self, updateType: .pagination)
+    }
+    
+    func loadPrevious() {
+        self.slidingWindow.loadPrevious()
+        self.slidingWindow.adjustWindow(focusPosition: 0, maxWindowSize: self.preferredMaxWindowSize)
+        self.delegate?.chatDataSourceDidUpdate(self, updateType: .pagination)
+    }
+    
+    func adjustNumberOfMessages(preferredMaxCount: Int?, focusPosition: Double, completion: (_ didAdjust: Bool) -> Void) {
+        let didAdjust = self.slidingWindow.adjustWindow(focusPosition: focusPosition, maxWindowSize: preferredMaxCount ?? self.preferredMaxWindowSize)
+        completion(didAdjust)
     }
 }

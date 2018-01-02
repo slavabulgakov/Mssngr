@@ -156,39 +156,9 @@
                     <view key="view" contentMode="scaleToFill" id="HAy-Bu-ML9">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7bf-2d-WQv">
-                                <rect key="frame" x="0.0" y="623" width="375" height="44"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="44" id="0AT-ld-KwM"/>
-                                </constraints>
-                                <state key="normal" title="Send message"/>
-                                <connections>
-                                    <action selector="sendMessage:" destination="aaq-uu-76s" eventType="touchUpInside" id="2ML-QL-rtq"/>
-                                </connections>
-                            </button>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="bYI-qP-kxL">
-                                <rect key="frame" x="0.0" y="64" width="375" height="551"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                            </textView>
-                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <constraints>
-                            <constraint firstItem="7bf-2d-WQv" firstAttribute="top" secondItem="bYI-qP-kxL" secondAttribute="bottom" constant="8" id="1je-vJ-i4g"/>
-                            <constraint firstItem="R0X-dn-VTs" firstAttribute="bottom" secondItem="7bf-2d-WQv" secondAttribute="bottom" id="47d-sj-L4i"/>
-                            <constraint firstItem="bYI-qP-kxL" firstAttribute="top" secondItem="R0X-dn-VTs" secondAttribute="top" id="6Hr-43-u13"/>
-                            <constraint firstItem="bYI-qP-kxL" firstAttribute="trailing" secondItem="R0X-dn-VTs" secondAttribute="trailing" id="B7B-Pm-Cp9"/>
-                            <constraint firstItem="7bf-2d-WQv" firstAttribute="leading" secondItem="R0X-dn-VTs" secondAttribute="leading" id="XwU-5y-sgN"/>
-                            <constraint firstItem="bYI-qP-kxL" firstAttribute="leading" secondItem="R0X-dn-VTs" secondAttribute="leading" id="g0Z-oW-JUG"/>
-                            <constraint firstItem="R0X-dn-VTs" firstAttribute="trailing" secondItem="7bf-2d-WQv" secondAttribute="trailing" id="vg2-dM-a7S"/>
-                        </constraints>
                         <viewLayoutGuide key="safeArea" id="R0X-dn-VTs"/>
                     </view>
-                    <connections>
-                        <outlet property="textView" destination="bYI-qP-kxL" id="wTR-ZL-IBq"/>
-                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dMd-J6-0OD" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
