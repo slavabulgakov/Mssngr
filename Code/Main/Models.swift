@@ -38,21 +38,25 @@ class User: ImmutableMappable, Equatable, Hashable {
 }
 
 class Message: ImmutableMappable {
+    var id: String
     var text: String
     var userId: String
     var isIncoming = false
 
     required init(map: Map) throws {
+        id = try map.value(Message.firebaseIdKey)
         text = try map.value("text")
         userId = try map.value("userId")
     }
 
-    init(text: String, userId: String) {
+    init(id: String, text: String, userId: String) {
+        self.id = id
         self.text = text
         self.userId = userId
     }
 
     func mapping(map: Map) {
+        id >>> map[Message.firebaseIdKey]
         text >>> map["text"]
         userId >>> map["userId"]
     }
@@ -77,21 +81,28 @@ class Chat: Equatable {
 class ChatWithoutUsers: ImmutableMappable {
     var id: String
     var users: Set<String>
-    var messages: [String: Message]
-    var arrayMessages: [Message] {
-        return Array(messages.values)
+    var messages: [Message]
+    
+    let messagesTransform = TransformOf<[Message], [String: [String: String]]>(fromJSON: { dict -> [Message]? in
+        dict?.map({ Message(id: $0.key, text: $0.value["text"] ?? "", userId: $0.value["userId"] ?? "") })
+    }) { messages -> [String : [String : String]]? in
+        var result = [String : [String : String]]()
+        for message in messages ?? [] {
+            result[message.id] = ["text": message.text, "userId": message.userId]
+        }
+        return result
     }
 
     required init(map: Map) throws {
         id = try map.value(ChatWithoutUsers.firebaseIdKey)
         users = try map.value("users", using: SetKeyTransform())
-        messages = try map.value("messages")
+        messages = try map.value("messages", using: messagesTransform)
     }
 
     func mapping(map: Map) {
         id >>> map[ChatWithoutUsers.firebaseIdKey]
         users >>> (map["users"], SetKeyTransform())
-        messages >>> map["messages"]
+        messages >>> (map["messages"], messagesTransform)
     }
 }
 

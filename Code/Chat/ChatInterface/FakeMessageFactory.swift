@@ -26,13 +26,6 @@ import Foundation
 import Chatto
 import ChattoAdditions
 
-extension Array {
-    func randomItem() -> Element {
-        let index = Int(arc4random_uniform(UInt32(self.count)))
-        return self[index]
-    }
-}
-
 public func createTextMessageModel(_ uid: String, text: String, isIncoming: Bool) -> DemoTextMessageModel {
     let messageModel = createMessageModel(uid, isIncoming: isIncoming, type: TextMessageModel<MessageModel>.chatItemType)
     let textMessageModel = DemoTextMessageModel(messageModel: messageModel, text: text)
@@ -41,35 +34,8 @@ public func createTextMessageModel(_ uid: String, text: String, isIncoming: Bool
 
 func createMessageModel(_ uid: String, isIncoming: Bool, type: String) -> MessageModel {
     let senderId = isIncoming ? "1" : "2"
-    let messageStatus = isIncoming || arc4random_uniform(100) % 3 == 0 ? MessageStatus.success : .failed
-    let messageModel = MessageModel(uid: uid, senderId: senderId, type: type, isIncoming: isIncoming, date: Date(), status: messageStatus)
+    let messageModel = MessageModel(uid: uid, senderId: senderId, type: type, isIncoming: isIncoming, date: Date(), status: .success)
     return messageModel
-}
-
-class FakeMessageFactory {
-    static let demoTexts = [
-        "Lorem ipsum dolor sit amet 😇, https://github.com/badoo/Chatto consectetur adipiscing elit , sed do eiusmod tempor incididunt 07400000000 📞 ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore https://github.com/badoo/Chatto eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat 07400000000 non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
-    ]
-
-    class func createChatItem(_ uid: String) -> MessageModelProtocol {
-        let isIncoming: Bool = arc4random_uniform(100) % 2 == 0
-        return self.createChatItem(uid, isIncoming: isIncoming)
-    }
-
-    class func createChatItem(_ uid: String, isIncoming: Bool) -> MessageModelProtocol {
-        return self.createTextMessageModel(uid, isIncoming: isIncoming)
-    }
-
-    class func createTextMessageModel(_ uid: String, isIncoming: Bool) -> DemoTextMessageModel {
-        let incomingText: String = isIncoming ? "incoming" : "outgoing"
-        let maxText = self.demoTexts.randomItem()
-        let length: Int = 10 + Int(arc4random_uniform(300))
-        let text = "\(String(maxText[..<maxText.characters.index(maxText.startIndex, offsetBy: length)])) incoming:\(incomingText), #:\(uid)"
-        
-        let messageModel = createMessageModel(uid, isIncoming: isIncoming, type: TextMessageModel<MessageModel>.chatItemType)
-        let textMessageModel = DemoTextMessageModel(messageModel: messageModel, text: text)
-        return textMessageModel
-    }
 }
 
 extension TextMessageModel {
@@ -81,37 +47,5 @@ extension TextMessageModel {
 extension PhotoMessageModel {
     static var chatItemType: ChatItemType {
         return "photo"
-    }
-}
-
-class TutorialMessageFactory {
-    static let messages = [
-        ("text", "Welcome to Chatto! A lightweight Swift framework to build chat apps"),
-        ("text", "It calculates sizes in the background for smooth pagination and rotation, and it can deal with thousands of messages with a sliding data source"),
-        ("text", "Along with Chatto there's ChattoAdditions, with bubbles and the input component"),
-        ("text", "This is a TextMessageCollectionViewCell. It uses UITextView with data detectors so you can interact with urls: https://github.com/badoo/Chatto, phone numbers: 07400000000, dates: 3 jan 2016 and others"),
-        ("image", "pic-test-1"),
-        ("image", "pic-test-2"),
-        ("image", "pic-test-3"),
-        ("text", "Those were some PhotoMessageCollectionViewCell. With some fake data transfer"),
-        ("text", "Both Text and Photo cells inherit from BaseMessageCollectionViewCell which adds support for a failed icon and a timestamp you can reveal by swiping from the right"),
-        ("text", "Each message is paired with a Presenter. Each presenter is responsible to present a message by managing a corresponding UICollectionViewCell. New types of messages can be easily added by creating new types of presenters!"),
-        ("text", "Messages have different margins and only some bubbles show a tail. This is done with a decorator that conforms to ChatItemsDecoratorProtocol"),
-        ("text", "Failed/sending status are completly separated cells. This helps to keep cells them simpler. They are generated with the decorator as well, but other approaches are possible, like being returned by the DataSource or using more complex cells"),
-        ("text", "More info on https://github.com/badoo/Chatto. We are waiting for your pull requests!")
-    ]
-
-    static func createMessages() -> [MessageModelProtocol] {
-        var result = [MessageModelProtocol]()
-        for (index, message) in self.messages.enumerated() {
-            let type = message.0
-            let content = message.1
-            let isIncoming: Bool = arc4random_uniform(100) % 2 == 0
-
-            if type == "text" {
-                result.append(createTextMessageModel("tutorial-\(index)", text: content, isIncoming: isIncoming))
-            }
-        }
-        return result
     }
 }

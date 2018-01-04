@@ -70,7 +70,6 @@ class NetworkController {
 
     func addChat(forUsers users: Set<User>, firstMessageText: String) -> Chat? {
         guard let currentUser = Auth.auth().currentUser else { return nil }
-        let firstMessage = Message(text: firstMessageText, userId: currentUser.uid)
         let mutableUsers = users.union(Set([User(user: currentUser)]))
         let newChatRef = reference.child("chats").childByAutoId()
         var usersIds = [String: Bool]()
@@ -78,21 +77,15 @@ class NetworkController {
             usersIds[user.id] = true
             reference.child("users/\(user.id)/chats/\(newChatRef.key)").setValue(true)
         }
-        saveMessage(message: firstMessage, chatRef: newChatRef)
+        let firstMessage = Message.createMessage(chatRef: newChatRef, text: firstMessageText, userId: currentUser.uid)
         newChatRef.child("users").setValue(usersIds)
         let chat = Chat(id: newChatRef.key, users: mutableUsers, messages: [firstMessage])
         return chat
     }
 
-    func sendMessage(chat: Chat, messageText: String) {
-        guard let currentUser = Auth.auth().currentUser else { return }
-        let message = Message(text: messageText, userId: currentUser.uid)
-        saveMessage(message: message, chatRef: reference.child("chats/\(chat.id)"))
-    }
-    
-    fileprivate func saveMessage(message: Message, chatRef: DatabaseReference) {
-        let newMessageRef = chatRef.child("messages").childByAutoId()
-        newMessageRef.setValue(message.toJSON())
+    func sendMessage(chat: Chat, messageText: String) -> Message? {
+        guard let currentUser = Auth.auth().currentUser else { return nil }
+        return Message.createMessage(chatRef: reference.child("chats/\(chat.id)"), text: messageText, userId: currentUser.uid)
     }
 
     func searchUsers(byEmail email: String, block: @escaping ([User]) -> Void) {
@@ -140,10 +133,19 @@ class NetworkController {
                 self.asyncRequest(background: {
                     return self.loadUsers(byUsersIds: chat.users).map { $0.value }
                 }) { users in
-                    observer.send(value: Chat(id: chat.id, users: Set(users), messages: chat.arrayMessages))
+                    observer.send(value: Chat(id: chat.id, users: Set(users), messages: chat.messages))
                 }
             }
         }
+    }
+}
+
+extension Message {
+    static func createMessage(chatRef: DatabaseReference, text: String, userId: String) -> Message {
+        let newMessageRef = chatRef.child("messages").childByAutoId()
+        let message = Message(id: newMessageRef.key, text: text, userId: userId)
+        newMessageRef.setValue(message.toJSON())
+        return message
     }
 }
 

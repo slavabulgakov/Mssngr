@@ -18,7 +18,6 @@ class ChatViewModel {
     fileprivate let token: Lifetime.Token
     fileprivate let lifetime: Lifetime
     
-    var nextMessageId: Int = 0
     let preferredMaxWindowSize = 500
     var slidingWindow: SlidingDataSource<ChatItemProtocol>
     weak var delegate: ChatDataSourceDelegateProtocol?
@@ -39,32 +38,48 @@ class ChatViewModel {
     
     func bindChatIfCan() {
         guard case .exist(let chat) = state else { return }
-        appController.network?.messages(chat: chat).take(during: lifetime).startWithValues { [weak self] message in
-            self?.addTextMessage(message.text, isIncoming: message.isIncoming)
+        appController.network?.messages(chat: chat).take(during: lifetime).startWithValues { [unowned self] message in
+            guard !self.updateMessageStatusIfCan(message: message) else { return }
+            self.addTextMessage(message: message)
         }
     }
     
     func sendMessage(_ message: MessageModelProtocol) {
-        //        self.fakeMessageStatus(message)
+        
     }
     
+    var sendingMessageModels = [String: DemoTextMessageModel]()
+    
     func send(text: String) {
+        var message: Message?
         switch state {
         case .new(let users):
             guard let chat = appController.network?.addChat(forUsers: users, firstMessageText: text) else { break }
             state = .exist(chat)
             bindChatIfCan()
+            message = chat.messages.first
         case .exist(let chat):
-            appController.network?.sendMessage(chat: chat, messageText: text)
+            message = appController.network?.sendMessage(chat: chat, messageText: text)
         }
+        guard let notNilMessage = message else { return }
+        addTextMessage(message: notNilMessage, isJustSent: true)
     }
     
-    fileprivate func addTextMessage(_ text: String, isIncoming: Bool) {
-        let uid = "\(self.nextMessageId)"
-        self.nextMessageId += 1
-        let message = createTextMessageModel(uid, text: text, isIncoming: isIncoming)
-        self.slidingWindow.insertItem(message, position: .bottom)
+    fileprivate func updateMessageStatusIfCan(message: Message) -> Bool {
+        guard let model = self.sendingMessageModels[message.id] else { return false }
+        model.status = .success
+        sendingMessageModels.removeValue(forKey: model.uid)
         self.delegate?.chatDataSourceDidUpdate(self)
+        return true
+    }
+    
+    fileprivate func addTextMessage(message: Message, isJustSent: Bool = false) {
+        defer { self.delegate?.chatDataSourceDidUpdate(self) }
+        let messageModel = createTextMessageModel(message.id, text: message.text, isIncoming: message.isIncoming)
+        self.slidingWindow.insertItem(messageModel, position: .bottom)
+        guard isJustSent else { return }
+        messageModel.status = .sending
+        sendingMessageModels[message.id] = messageModel
     }
 }
 
