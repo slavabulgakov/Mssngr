@@ -15,7 +15,11 @@ class AddChatViewModel {
     fileprivate var _cells = [AddChatCellViewModel]()
     fileprivate let reloadObserver: Signal<Void, NoError>.Observer
     let reloadSignal: Signal<Void, NoError>
-    var users = Set<User>()
+    
+    fileprivate let _users = MutableProperty<Set<User>>(Set<User>())
+    fileprivate(set) lazy var users: Property<Set<User>> = {
+        return Property(self._users)
+    }()
     
     init(appController: AppController) {
         self.appController = appController
@@ -38,6 +42,6 @@ class AddChatViewModel {
     }
     
     func select(index: Int) {
-        users.insert(_cells[index].user)
+        _users.value.insert(_cells[index].user)
     }
 }

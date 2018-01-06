@@ -22,12 +22,17 @@ class SignInCoordinator: Coordinator {
         viewController.viewModel = viewModel
         viewController.coordinationDelegate = self
     }
+    
+    func signUp(viewController: SignUpViewController) {
+        let viewModel = SignUpViewModel(appController: appController)
+        viewController.viewModel = viewModel
+        viewController.coordinationDelegate = self
+    }
 }
 
 extension SignInCoordinator: CoordinationDelegate {
     func prepareForSegue(segue: UIStoryboardSegue) {
         guard let viewController = segue.destination as? SignUpViewController else { return }
-        let coordinator = SignUpCoordinator(viewController: viewController, appController: appController)
-        coordinator.start()
+        signUp(viewController: viewController)
     }
 }

@@ -13,8 +13,13 @@ import Chatto
 import ChattoAdditions
 
 class ChatViewModel {
+    enum ChatOpeningMode {
+        case createNewChat(Set<User>)
+        case openExistChat(Chat)
+    }
+    var state: ChatOpeningMode
+    
     let appController: AppController
-    var state: State
     fileprivate let token: Lifetime.Token
     fileprivate let lifetime: Lifetime
     
@@ -22,12 +27,7 @@ class ChatViewModel {
     var slidingWindow: SlidingDataSource<ChatItemProtocol>
     weak var delegate: ChatDataSourceDelegateProtocol?
     
-    enum State {
-        case new(Set<User>)
-        case exist(Chat)
-    }
-    
-    init(appController: AppController, state: State) {
+    init(appController: AppController, state: ChatOpeningMode) {
         self.appController = appController
         self.state = state
         token = Lifetime.Token()
@@ -37,10 +37,12 @@ class ChatViewModel {
     }
     
     func bindChatIfCan() {
-        guard case .exist(let chat) = state else { return }
-        appController.network?.messages(chat: chat).take(during: lifetime).startWithValues { [unowned self] message in
+        guard case .openExistChat(let chat) = state else { return }
+        appController.network?.messages(chat: chat).on(value: { [unowned self] message in
             guard !self.updateMessageStatusIfCan(message: message) else { return }
             self.addTextMessage(message: message)
+        }).debounce(0.1, on: QueueScheduler.main).take(during: lifetime).startWithValues { [unowned self] message in
+            self.delegate?.chatDataSourceDidUpdate(self)
         }
     }
     
@@ -53,12 +55,12 @@ class ChatViewModel {
     func send(text: String) {
         var message: Message?
         switch state {
-        case .new(let users):
+        case .createNewChat(let users):
             guard let chat = appController.network?.addChat(forUsers: users, firstMessageText: text) else { break }
-            state = .exist(chat)
+            state = .openExistChat(chat)
             bindChatIfCan()
             message = chat.messages.first
-        case .exist(let chat):
+        case .openExistChat(let chat):
             message = appController.network?.sendMessage(chat: chat, messageText: text)
         }
         guard let notNilMessage = message else { return }
@@ -69,12 +71,10 @@ class ChatViewModel {
         guard let model = self.sendingMessageModels[message.id] else { return false }
         model.status = .success
         sendingMessageModels.removeValue(forKey: model.uid)
-        self.delegate?.chatDataSourceDidUpdate(self)
         return true
     }
     
     fileprivate func addTextMessage(message: Message, isJustSent: Bool = false) {
-        defer { self.delegate?.chatDataSourceDidUpdate(self) }
         let messageModel = createTextMessageModel(message.id, text: message.text, isIncoming: message.isIncoming)
         self.slidingWindow.insertItem(messageModel, position: .bottom)
         guard isJustSent else { return }

@@ -23,13 +23,11 @@
 		DE3EF9601FFA4822002D4094 /* SendingStatusCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = DE3EF9531FFA4822002D4094 /* SendingStatusCollectionViewCell.xib */; };
 		DE87BCB31FEEDBB7005670A9 /* ChatsCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE87BCB21FEEDBB7005670A9 /* ChatsCellViewModel.swift */; };
 		DE87BCB81FEFE48B005670A9 /* AddChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE87BCB71FEFE48B005670A9 /* AddChatViewController.swift */; };
-		DE87BCBA1FEFE4A7005670A9 /* AddChatCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE87BCB91FEFE4A7005670A9 /* AddChatCoordinator.swift */; };
 		DE87BCBC1FEFE4CC005670A9 /* AddChatViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE87BCBB1FEFE4CC005670A9 /* AddChatViewModel.swift */; };
 		DE87BCBE1FF00F3C005670A9 /* AddChatCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE87BCBD1FF00F3C005670A9 /* AddChatCellViewModel.swift */; };
 		DE87BCC01FF010B5005670A9 /* Models.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE87BCBF1FF010B5005670A9 /* Models.swift */; };
 		DEA016EF1FF546B5001CD074 /* ChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEA016EE1FF546B5001CD074 /* ChatViewController.swift */; };
 		DEA016F11FF546C3001CD074 /* ChatViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEA016F01FF546C3001CD074 /* ChatViewModel.swift */; };
-		DEA016F31FF546D6001CD074 /* ChatCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEA016F21FF546D6001CD074 /* ChatCoordinator.swift */; };
 		DEE87FD31FED0E550058D9F0 /* ChatsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEE87FCA1FED0E550058D9F0 /* ChatsViewController.swift */; };
 		DEE87FD41FED0E550058D9F0 /* ChatsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEE87FCB1FED0E550058D9F0 /* ChatsViewModel.swift */; };
 		DEE87FD51FED0E550058D9F0 /* ChatsCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEE87FCC1FED0E550058D9F0 /* ChatsCoordinator.swift */; };
@@ -47,7 +45,6 @@
 		DEE87FF01FED0FFC0058D9F0 /* SignInCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEE87FEF1FED0FFC0058D9F0 /* SignInCoordinator.swift */; };
 		DEE87FF51FED3ACE0058D9F0 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEE87FF41FED3ACE0058D9F0 /* SignUpViewController.swift */; };
 		DEE87FF71FED3AFD0058D9F0 /* SignUpViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEE87FF61FED3AFD0058D9F0 /* SignUpViewModel.swift */; };
-		DEE87FF91FED3D570058D9F0 /* SignUpCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEE87FF81FED3D570058D9F0 /* SignUpCoordinator.swift */; };
 		E31058011A7B9465251EB95A /* Pods_Mssngr.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0D96E1EE2E522DA3488CAF0F /* Pods_Mssngr.framework */; };
 /* End PBXBuildFile section */
 
@@ -70,13 +67,11 @@
 		DE3EF9531FFA4822002D4094 /* SendingStatusCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SendingStatusCollectionViewCell.xib; sourceTree = "<group>"; };
 		DE87BCB21FEEDBB7005670A9 /* ChatsCellViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatsCellViewModel.swift; sourceTree = "<group>"; };
 		DE87BCB71FEFE48B005670A9 /* AddChatViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddChatViewController.swift; sourceTree = "<group>"; };
-		DE87BCB91FEFE4A7005670A9 /* AddChatCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddChatCoordinator.swift; sourceTree = "<group>"; };
 		DE87BCBB1FEFE4CC005670A9 /* AddChatViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddChatViewModel.swift; sourceTree = "<group>"; };
 		DE87BCBD1FF00F3C005670A9 /* AddChatCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddChatCellViewModel.swift; sourceTree = "<group>"; };
 		DE87BCBF1FF010B5005670A9 /* Models.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Models.swift; sourceTree = "<group>"; };
 		DEA016EE1FF546B5001CD074 /* ChatViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatViewController.swift; sourceTree = "<group>"; };
 		DEA016F01FF546C3001CD074 /* ChatViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatViewModel.swift; sourceTree = "<group>"; };
-		DEA016F21FF546D6001CD074 /* ChatCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatCoordinator.swift; sourceTree = "<group>"; };
 		DEC8C56D1FD5A00B00717919 /* Mssngr.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Mssngr.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DEE87FCA1FED0E550058D9F0 /* ChatsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatsViewController.swift; sourceTree = "<group>"; };
 		DEE87FCB1FED0E550058D9F0 /* ChatsViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatsViewModel.swift; sourceTree = "<group>"; };
@@ -96,7 +91,6 @@
 		DEE87FEF1FED0FFC0058D9F0 /* SignInCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInCoordinator.swift; sourceTree = "<group>"; };
 		DEE87FF41FED3ACE0058D9F0 /* SignUpViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		DEE87FF61FED3AFD0058D9F0 /* SignUpViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewModel.swift; sourceTree = "<group>"; };
-		DEE87FF81FED3D570058D9F0 /* SignUpCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpCoordinator.swift; sourceTree = "<group>"; };
 		F6771E0150743FAFF9C91185 /* Pods-Mssngr.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Mssngr.release.xcconfig"; path = "Pods/Target Support Files/Pods-Mssngr/Pods-Mssngr.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -178,7 +172,6 @@
 			isa = PBXGroup;
 			children = (
 				DE87BCB71FEFE48B005670A9 /* AddChatViewController.swift */,
-				DE87BCB91FEFE4A7005670A9 /* AddChatCoordinator.swift */,
 				DE87BCBB1FEFE4CC005670A9 /* AddChatViewModel.swift */,
 				DE87BCBD1FF00F3C005670A9 /* AddChatCellViewModel.swift */,
 			);
@@ -191,7 +184,6 @@
 				DE3EF9411FFA4766002D4094 /* ChatInterface */,
 				DEA016EE1FF546B5001CD074 /* ChatViewController.swift */,
 				DEA016F01FF546C3001CD074 /* ChatViewModel.swift */,
-				DEA016F21FF546D6001CD074 /* ChatCoordinator.swift */,
 			);
 			path = Chat;
 			sourceTree = "<group>";
@@ -279,7 +271,6 @@
 			children = (
 				DEE87FF41FED3ACE0058D9F0 /* SignUpViewController.swift */,
 				DEE87FF61FED3AFD0058D9F0 /* SignUpViewModel.swift */,
-				DEE87FF81FED3D570058D9F0 /* SignUpCoordinator.swift */,
 			);
 			path = SignUp;
 			sourceTree = "<group>";
@@ -451,13 +442,10 @@
 				DE3EF95D1FFA4822002D4094 /* TimeSeparatorCollectionViewCell.swift in Sources */,
 				DEE87FD61FED0E550058D9F0 /* AppCoordinator.swift in Sources */,
 				DE3EF9571FFA4822002D4094 /* DemoTextMessageViewModel.swift in Sources */,
-				DEA016F31FF546D6001CD074 /* ChatCoordinator.swift in Sources */,
 				DEE87FD51FED0E550058D9F0 /* ChatsCoordinator.swift in Sources */,
 				DEE87FEE1FED0FD10058D9F0 /* SignInViewModel.swift in Sources */,
 				DEE87FD41FED0E550058D9F0 /* ChatsViewModel.swift in Sources */,
 				DEE87FF51FED3ACE0058D9F0 /* SignUpViewController.swift in Sources */,
-				DE87BCBA1FEFE4A7005670A9 /* AddChatCoordinator.swift in Sources */,
-				DEE87FF91FED3D570058D9F0 /* SignUpCoordinator.swift in Sources */,
 				DE3EF95A1FFA4822002D4094 /* BaseMessageHandler.swift in Sources */,
 				DE87BCB31FEEDBB7005670A9 /* ChatsCellViewModel.swift in Sources */,
 				DE87BCBE1FF00F3C005670A9 /* AddChatCellViewModel.swift in Sources */,
