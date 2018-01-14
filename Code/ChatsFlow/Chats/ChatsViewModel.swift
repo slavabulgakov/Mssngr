@@ -21,10 +21,14 @@ class ChatsViewModel {
         (chatSelectSignal, chatSelectObserver) = Signal<Chat, NoError>.pipe()
     }
 
-    func chatsProducer() -> SignalProducer<(), NoError>? {
-        return appController?.network?.chatsProducer().on {
-            self._chats += [ChatsCellViewModel(chat: $0)]
-        }.debounce(0.1, on: QueueScheduler.main).map { _ in return () }
+    func updateChatsProducer() -> SignalProducer<(), NoError>? {
+        guard let network = appController?.network else { return nil }
+        let remove = network.removeChatProducer().on {
+            guard let index = self._chats.index(of: ChatsCellViewModel(chat: $0)) else { return }
+            self._chats.remove(at: index)
+        }
+        let add = network.addChatProducer().on { self._chats += [ChatsCellViewModel(chat: $0)] }
+        return SignalProducer.merge(remove, add).debounce(0.1, on: QueueScheduler.main).map { _ in return () }
     }
 
     var numberOfRows: Int {
@@ -33,6 +37,10 @@ class ChatsViewModel {
 
     func item(atIndex index: Int) -> ChatsCellViewModel {
         return _chats[index]
+    }
+    
+    func items() -> [ChatsCellViewModel] {
+        return _chats
     }
 
     func select(index: Int) {

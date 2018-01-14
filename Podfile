@@ -16,4 +16,5 @@ target 'Mssngr' do
 	pod 'Firebase/Auth'
 	pod 'Firebase/Database'
     pod 'ObjectMapper', '~> 3.1.0'
+    pod 'IGListKit', '~> 3.0'
 end

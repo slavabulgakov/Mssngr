@@ -122,7 +122,7 @@ class NetworkController {
         return self.reference.child("chats").queryOrdered(byChild: "users/\(uid)").queryEqual(toValue: true)
     }
 
-    func chatsProducer() -> SignalProducer<Chat, NoError> {
+    func addChatProducer() -> SignalProducer<Chat, NoError> {
         return SignalProducer<ChatWithoutUsers, NoError> { [unowned self] observer, _ in
             self.chatsQuery?.observe(.childAdded) { snapshot in
                 guard let chat = ChatWithoutUsers(snapshot: snapshot) else { return }
@@ -135,6 +135,15 @@ class NetworkController {
                 }) { users in
                     observer.send(value: Chat(id: chat.id, users: Set(users), messages: chat.messages))
                 }
+            }
+        }
+    }
+    
+    func removeChatProducer() -> SignalProducer<Chat, NoError> {
+        return SignalProducer<Chat, NoError> { [unowned self] observer, _ in
+            self.chatsQuery?.observe(.childRemoved) { snapshot in
+                guard let chat = ChatWithoutUsers(snapshot: snapshot) else { return }
+                observer.send(value: Chat(id: chat.id, users: Set(), messages: chat.messages))
             }
         }
     }

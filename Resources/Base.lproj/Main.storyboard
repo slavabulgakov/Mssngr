@@ -35,40 +35,24 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Yuj-EM-xhV">
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="0kH-qO-DWW">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="ChatCellIdentifier" textLabel="viS-XL-kew" style="IBUITableViewCellStyleDefault" id="Jem-J6-2DC">
-                                        <rect key="frame" x="0.0" y="28" width="375" height="44"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Jem-J6-2DC" id="CK8-2C-DEn">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="viS-XL-kew">
-                                                    <rect key="frame" x="15" y="0.0" width="345" height="43.5"/>
-                                                    <autoresizingMask key="autoresizingMask"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <nil key="textColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                            </subviews>
-                                        </tableViewCellContentView>
-                                    </tableViewCell>
-                                </prototypes>
-                                <connections>
-                                    <outlet property="dataSource" destination="BYZ-38-t0r" id="bUl-De-kgz"/>
-                                    <outlet property="delegate" destination="BYZ-38-t0r" id="7dc-2E-z6k"/>
-                                </connections>
-                            </tableView>
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="T3Y-78-X1d">
+                                    <size key="itemSize" width="375" height="50"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells/>
+                            </collectionView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="Yuj-EM-xhV" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="1Nj-G9-DST"/>
-                            <constraint firstItem="Yuj-EM-xhV" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="eZK-E2-Ylq"/>
-                            <constraint firstItem="Yuj-EM-xhV" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="jNH-mm-rQ3"/>
-                            <constraint firstItem="Yuj-EM-xhV" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="r2a-32-9Rv"/>
+                            <constraint firstItem="0kH-qO-DWW" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="Ah9-5K-BWg"/>
+                            <constraint firstItem="0kH-qO-DWW" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="EUG-XT-4UZ"/>
+                            <constraint firstItem="0kH-qO-DWW" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="PHv-bH-MEF"/>
+                            <constraint firstItem="0kH-qO-DWW" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="PJh-4I-jTt"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
@@ -80,7 +64,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <outlet property="tableView" destination="Yuj-EM-xhV" id="7VK-4B-IWW"/>
+                        <outlet property="collectionView" destination="0kH-qO-DWW" id="i8h-na-hsr"/>
                         <segue destination="GJm-cJ-WZ4" kind="presentation" identifier="ChatsToSignIn" id="kcQ-5b-H9Y"/>
                         <segue destination="aaq-uu-76s" kind="show" identifier="ChatsToChat" id="Rt9-uN-Tax"/>
                     </connections>

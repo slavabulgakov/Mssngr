@@ -9,45 +9,39 @@
 import UIKit
 import ReactiveSwift
 import Result
+import IGListKit
 
 class ChatsViewController: UIViewController, Coordinated {
     let cellIdentifier = "ChatCellIdentifier"
     var viewModel: ChatsViewModel?
     var coordinationDelegate: CoordinationDelegate?
     let (viewDidLoadSignal, viewDidLoadObserver) = Signal<Void, NoError>.pipe()
-    @IBOutlet weak var tableView: UITableView!
+    lazy var adapter: ListAdapter = {
+        return ListAdapter(updater: ListAdapterUpdater(), viewController: self)
+    }()
+    @IBOutlet weak var collectionView: UICollectionView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        adapter.collectionView = collectionView
+        adapter.dataSource = self
         viewDidLoadObserver.send(value: ())
-        viewModel?.chatsProducer()?.take(during: reactive.lifetime).startWithValues { [weak self] in
-            self?.tableView.reloadData()
+        viewModel?.updateChatsProducer()?.take(during: reactive.lifetime).startWithValues { [weak self] in
+            self?.adapter.performUpdates(animated: true)
         }
     }
 }
 
-extension ChatsViewController: UITableViewDelegate, UITableViewDataSource {
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return viewModel?.numberOfRows ?? 0
+extension ChatsViewController: ListAdapterDataSource {
+    func objects(for listAdapter: ListAdapter) -> [ListDiffable] {
+        return viewModel?.items() ?? []
     }
     
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier), let viewModel = viewModel else {
-            let cell = UITableViewCell()
-            cell.backgroundColor = UIColor.red
-            return cell
-        }
-        cell.set(viewModel: viewModel.item(atIndex: indexPath.row))
-        return cell
+    func listAdapter(_ listAdapter: ListAdapter, sectionControllerFor object: Any) -> ListSectionController {
+        return ChatsSectionController(viewModel: viewModel)
     }
     
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        viewModel?.select(index: indexPath.row)
-    }
-}
-
-extension UITableViewCell {
-    func set(viewModel: ChatsCellViewModel) {
-        textLabel?.text = viewModel.title
+    func emptyView(for listAdapter: ListAdapter) -> UIView? {
+        return nil
     }
 }
