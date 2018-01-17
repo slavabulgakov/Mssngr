@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		DE08D82F200F97AA0065CF95 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DE08D82B200F97AA0065CF95 /* LaunchScreen.storyboard */; };
+		DE08D830200F97AA0065CF95 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DE08D82D200F97AA0065CF95 /* Main.storyboard */; };
+		DE08D839200F97BD0065CF95 /* Strings.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE08D832200F97BD0065CF95 /* Strings.swift */; };
+		DE08D83A200F97BD0065CF95 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = DE08D833200F97BD0065CF95 /* Localizable.strings */; };
 		DE380C5320011D2D00E0B609 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE380C2720011D2D00E0B609 /* SignUpViewController.swift */; };
 		DE380C5420011D2D00E0B609 /* SignUpViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE380C2820011D2D00E0B609 /* SignUpViewModel.swift */; };
 		DE380C5520011D2D00E0B609 /* SignInViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE380C2A20011D2D00E0B609 /* SignInViewModel.swift */; };
@@ -47,14 +51,16 @@
 		DEE87FDA1FED0E550058D9F0 /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEE87FD21FED0E550058D9F0 /* Coordinator.swift */; };
 		DEE87FE31FED0E6C0058D9F0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DEE87FDC1FED0E6C0058D9F0 /* Assets.xcassets */; };
 		DEE87FE41FED0E6C0058D9F0 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = DEE87FDD1FED0E6C0058D9F0 /* GoogleService-Info.plist */; };
-		DEE87FE51FED0E6C0058D9F0 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DEE87FDE1FED0E6C0058D9F0 /* LaunchScreen.storyboard */; };
-		DEE87FE61FED0E6C0058D9F0 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DEE87FE01FED0E6C0058D9F0 /* Main.storyboard */; };
 		E31058011A7B9465251EB95A /* Pods_Mssngr.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0D96E1EE2E522DA3488CAF0F /* Pods_Mssngr.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		0D96E1EE2E522DA3488CAF0F /* Pods_Mssngr.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Mssngr.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B917A6E56E01D3346BFC2A4B /* Pods-Mssngr.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Mssngr.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Mssngr/Pods-Mssngr.debug.xcconfig"; sourceTree = "<group>"; };
+		DE08D82C200F97AA0065CF95 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Localization/Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		DE08D82E200F97AA0065CF95 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Localization/Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		DE08D832200F97BD0065CF95 /* Strings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Strings.swift; sourceTree = "<group>"; };
+		DE08D834200F97BD0065CF95 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		DE380C2720011D2D00E0B609 /* SignUpViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		DE380C2820011D2D00E0B609 /* SignUpViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignUpViewModel.swift; sourceTree = "<group>"; };
 		DE380C2A20011D2D00E0B609 /* SignInViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignInViewModel.swift; sourceTree = "<group>"; };
@@ -96,8 +102,6 @@
 		DEE87FD21FED0E550058D9F0 /* Coordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
 		DEE87FDC1FED0E6C0058D9F0 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		DEE87FDD1FED0E6C0058D9F0 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
-		DEE87FDF1FED0E6C0058D9F0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
-		DEE87FE11FED0E6C0058D9F0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		DEE87FE21FED0E6C0058D9F0 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F6771E0150743FAFF9C91185 /* Pods-Mssngr.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Mssngr.release.xcconfig"; path = "Pods/Target Support Files/Pods-Mssngr/Pods-Mssngr.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -129,6 +133,15 @@
 				F6771E0150743FAFF9C91185 /* Pods-Mssngr.release.xcconfig */,
 			);
 			name = Pods;
+			sourceTree = "<group>";
+		};
+		DE08D831200F97BD0065CF95 /* Localization */ = {
+			isa = PBXGroup;
+			children = (
+				DE08D832200F97BD0065CF95 /* Strings.swift */,
+				DE08D833200F97BD0065CF95 /* Localizable.strings */,
+			);
+			path = Localization;
 			sourceTree = "<group>";
 		};
 		DE380C2520011D2D00E0B609 /* SignInFlow */ = {
@@ -302,10 +315,11 @@
 		DEE87FDB1FED0E6C0058D9F0 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				DE08D831200F97BD0065CF95 /* Localization */,
+				DE08D82B200F97AA0065CF95 /* LaunchScreen.storyboard */,
+				DE08D82D200F97AA0065CF95 /* Main.storyboard */,
 				DEE87FDC1FED0E6C0058D9F0 /* Assets.xcassets */,
 				DEE87FDD1FED0E6C0058D9F0 /* GoogleService-Info.plist */,
-				DEE87FDE1FED0E6C0058D9F0 /* LaunchScreen.storyboard */,
-				DEE87FE01FED0E6C0058D9F0 /* Main.storyboard */,
 				DEE87FE21FED0E6C0058D9F0 /* Info.plist */,
 			);
 			path = Resources;
@@ -324,6 +338,7 @@
 				DEC8C56B1FD5A00B00717919 /* Resources */,
 				554909D1C834262C43E49928 /* [CP] Embed Pods Frameworks */,
 				4E48E0C0C4B19ED5560351C4 /* [CP] Copy Pods Resources */,
+				DE08D82A200F96730065CF95 /* SwiftGen script */,
 			);
 			buildRules = (
 			);
@@ -375,11 +390,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				DE776A9A200BBA7B00AC07CE /* LabelCell.xib in Resources */,
-				DEE87FE51FED0E6C0058D9F0 /* LaunchScreen.storyboard in Resources */,
 				DE380C5F20011D2D00E0B609 /* SendingStatusCollectionViewCell.xib in Resources */,
 				DEE87FE31FED0E6C0058D9F0 /* Assets.xcassets in Resources */,
+				DE08D83A200F97BD0065CF95 /* Localizable.strings in Resources */,
+				DE08D830200F97AA0065CF95 /* Main.storyboard in Resources */,
+				DE08D82F200F97AA0065CF95 /* LaunchScreen.storyboard in Resources */,
 				DEE87FE41FED0E6C0058D9F0 /* GoogleService-Info.plist in Resources */,
-				DEE87FE61FED0E6C0058D9F0 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -459,6 +475,20 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Mssngr/Pods-Mssngr-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
+		DE08D82A200F96730065CF95 /* SwiftGen script */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "SwiftGen script";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "$PODS_ROOT/SwiftGen/bin/swiftgen strings -t structured-swift4 -o ${SRCROOT}/Resources/Localization/Strings.swift ${SRCROOT}/Resources/Localization/en.lproj/Localizable.strings";
+		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -466,6 +496,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DE08D839200F97BD0065CF95 /* Strings.swift in Sources */,
 				DE380C6E20011D2D00E0B609 /* ChatsCoordinator.swift in Sources */,
 				DE380C6720011D2D00E0B609 /* ChatViewModel.swift in Sources */,
 				DEE87FDA1FED0E550058D9F0 /* Coordinator.swift in Sources */,
@@ -508,20 +539,28 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		DEE87FDE1FED0E6C0058D9F0 /* LaunchScreen.storyboard */ = {
+		DE08D82B200F97AA0065CF95 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
-				DEE87FDF1FED0E6C0058D9F0 /* Base */,
+				DE08D82C200F97AA0065CF95 /* Base */,
 			);
 			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
 		};
-		DEE87FE01FED0E6C0058D9F0 /* Main.storyboard */ = {
+		DE08D82D200F97AA0065CF95 /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
-				DEE87FE11FED0E6C0058D9F0 /* Base */,
+				DE08D82E200F97AA0065CF95 /* Base */,
 			);
 			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		DE08D833200F97BD0065CF95 /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				DE08D834200F97BD0065CF95 /* en */,
+			);
+			name = Localizable.strings;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */

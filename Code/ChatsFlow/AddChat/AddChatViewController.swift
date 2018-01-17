@@ -21,7 +21,7 @@ class AddChatViewController: UIViewController, Coordinated {
         super.viewDidLoad()
         searchController.obscuresBackgroundDuringPresentation = false
         let searchBar = searchController.searchBar
-        searchBar.placeholder = "Emails"
+        searchBar.placeholder = L10n.email
         searchBar.autocapitalizationType = .none
         searchBar.keyboardType = .emailAddress
         searchController.searchResultsUpdater = self
