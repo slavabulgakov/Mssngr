@@ -14,9 +14,9 @@ import CocoaLumberjack
 class ChatsCoordinator: Coordinator {
     let viewController: ChatsViewController
     var appController: AppController
-    
+
     var chatOpeningMode: ChatViewModel.ChatOpeningMode?
-    
+
 
     fileprivate let token: Lifetime.Token
     fileprivate let lifetime: Lifetime
@@ -35,16 +35,16 @@ class ChatsCoordinator: Coordinator {
         viewController.viewDidLoadSignal.flatMap(.latest) { [weak self] () -> SignalProducer<Void, NoError> in
             self?.appController.load()
             return self?.appController.network?.user.producer.skip(first: 1).filter({ $0 == nil }).map({ _ in return () }) ?? SignalProducer.empty
-            }.take(during: lifetime).observeValues { [weak self] _ in
-                self?.viewController.performSegue(withIdentifier: "ChatsToSignIn", sender: nil)
+        }.take(during: lifetime).observeValues { [weak self] _ in
+            self?.viewController.performSegue(withIdentifier: "ChatsToSignIn", sender: nil)
         }
-        
+
         viewModel.chatSelectSignal.take(during: lifetime).observeValues { [weak self] chat in
             self?.chatOpeningMode = .openExistChat(chat)
             self?.viewController.performSegue(withIdentifier: "ChatsToChat", sender: nil)
         }
     }
-    
+
     func createChat(viewController: AddChatViewController) {
         let viewModel = AddChatViewModel(appController: appController)
         viewController.viewModel = viewModel
@@ -53,7 +53,7 @@ class ChatsCoordinator: Coordinator {
             self?.chatOpeningMode = .createNewChat(users)
         }
     }
-    
+
     func openChat(viewController: ChatViewController) {
         guard let chatMode = chatOpeningMode else { return }
         let viewModel = ChatViewModel(appController: appController, state: chatMode)

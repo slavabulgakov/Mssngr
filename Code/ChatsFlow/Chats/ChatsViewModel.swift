@@ -38,7 +38,7 @@ class ChatsViewModel {
     func item(atIndex index: Int) -> ChatsCellViewModel {
         return _chats[index]
     }
-    
+
     func items() -> [ChatsCellViewModel] {
         return _chats
     }

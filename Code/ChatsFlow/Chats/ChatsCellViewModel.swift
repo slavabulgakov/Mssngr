@@ -9,10 +9,10 @@
 import IGListKit
 
 class ChatsCellViewModel: Equatable {
-    static func ==(lhs: ChatsCellViewModel, rhs: ChatsCellViewModel) -> Bool {
+    static func == (lhs: ChatsCellViewModel, rhs: ChatsCellViewModel) -> Bool {
         return lhs.chat == rhs.chat
     }
-    
+
     let chat: Chat
 
     init(chat: Chat) {
@@ -28,7 +28,7 @@ extension ChatsCellViewModel: ListDiffable {
     func diffIdentifier() -> NSObjectProtocol {
         return chat.id as NSObjectProtocol
     }
-    
+
     func isEqual(toDiffableObject object: ListDiffable?) -> Bool {
         if let cell = object as? ChatsCellViewModel {
             return chat == cell.chat

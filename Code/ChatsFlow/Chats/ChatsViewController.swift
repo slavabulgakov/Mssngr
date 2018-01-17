@@ -19,7 +19,7 @@ class ChatsViewController: UIViewController, Coordinated {
         return ListAdapter(updater: ListAdapterUpdater(), viewController: self)
     }()
     @IBOutlet weak var collectionView: UICollectionView!
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         adapter.collectionView = collectionView
@@ -35,11 +35,11 @@ extension ChatsViewController: ListAdapterDataSource {
     func objects(for listAdapter: ListAdapter) -> [ListDiffable] {
         return viewModel?.items() ?? []
     }
-    
+
     func listAdapter(_ listAdapter: ListAdapter, sectionControllerFor object: Any) -> ListSectionController {
         return ChatsSectionController(viewModel: viewModel)
     }
-    
+
     func emptyView(for listAdapter: ListAdapter) -> UIView? {
         return nil
     }

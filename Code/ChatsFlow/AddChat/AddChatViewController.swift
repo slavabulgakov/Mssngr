@@ -36,12 +36,12 @@ class AddChatViewController: UIViewController, Coordinated {
         navigationItem.hidesSearchBarWhenScrolling = false
         keyboardListener.beginListening()
     }
-    
+
     override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
         keyboardListener.endListening()
     }
-    
+
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         navigationController?.setToolbarHidden(true, animated: false)
@@ -73,8 +73,8 @@ class AddChatViewController: UIViewController, Coordinated {
     @objc fileprivate func goToChat() {
         performSegue(withIdentifier: "AddChatToChat", sender: nil)
     }
-    
-    
+
+
 }
 
 extension AddChatViewController: UISearchResultsUpdating {

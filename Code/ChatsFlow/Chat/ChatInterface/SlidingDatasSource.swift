@@ -39,7 +39,7 @@ public class SlidingDataSource<Element> {
     private var itemsOffset: Int
     public var itemsInWindow: [Element] {
         let offset = self.windowOffset - self.itemsOffset
-        return Array(items[offset..<offset+self.windowCount])
+        return Array(items[offset..<offset + self.windowCount])
     }
 
     public init(count: Int, pageSize: Int, itemGenerator: (() -> Element)?) {
@@ -122,7 +122,7 @@ public class SlidingDataSource<Element> {
         }
         let sizeDiff = self.windowCount - maxWindowSize
         guard sizeDiff > 0 else { return false }
-        self.windowOffset +=  Int(focusPosition * Double(sizeDiff))
+        self.windowOffset += Int(focusPosition * Double(sizeDiff))
         self.windowCount = maxWindowSize
         return true
     }

@@ -13,12 +13,12 @@ import Result
 class SignInViewModel {
     let appController: AppController
     let signInStatusSignal: Signal<Void, NoError>?
-    
+
     init(appController: AppController) {
         self.appController = appController
         signInStatusSignal = appController.network?.user.signal.skipNil().map({ _ in return () })
     }
-    
+
     func signIn(email: String, password: String) {
         appController.network?.signIn(email: email, password: password)
     }

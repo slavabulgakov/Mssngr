@@ -82,11 +82,11 @@ class ChatWithoutUsers: ImmutableMappable {
     var id: String
     var users: Set<String>
     var messages: [Message]
-    
+
     let messagesTransform = TransformOf<[Message], [String: [String: String]]>(fromJSON: { dict -> [Message]? in
         dict?.map({ Message(id: $0.key, text: $0.value["text"] ?? "", userId: $0.value["userId"] ?? "") })
-    }) { messages -> [String : [String : String]]? in
-        var result = [String : [String : String]]()
+    }) { messages -> [String: [String: String]]? in
+        var result = [String: [String: String]]()
         for message in messages ?? [] {
             result[message.id] = ["text": message.text, "userId": message.userId]
         }

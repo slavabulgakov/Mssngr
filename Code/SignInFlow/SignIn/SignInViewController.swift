@@ -13,14 +13,14 @@ class SignInViewController: UIViewController, Coordinated {
     var coordinationDelegate: CoordinationDelegate?
     @IBOutlet weak var email: UITextField!
     @IBOutlet weak var password: UITextField!
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         viewModel?.signInStatusSignal?.observeValues { [weak self] in
             self?.dismiss(animated: true, completion: nil)
         }
     }
-    
+
     @IBAction func signInButtonTap(_ sender: UIButton) {
         guard let email = email.text, let password = password.text else { return }
         viewModel?.signIn(email: email, password: password)

@@ -11,18 +11,18 @@ import UIKit
 class SignInCoordinator: Coordinator {
     let viewController: SignInViewController
     var appController: AppController
-    
+
     init(viewController: SignInViewController, appController: AppController) {
         self.viewController = viewController
         self.appController = appController
     }
-    
+
     func start() {
         let viewModel = SignInViewModel(appController: appController)
         viewController.viewModel = viewModel
         viewController.coordinationDelegate = self
     }
-    
+
     func signUp(viewController: SignUpViewController) {
         let viewModel = SignUpViewModel(appController: appController)
         viewController.viewModel = viewModel

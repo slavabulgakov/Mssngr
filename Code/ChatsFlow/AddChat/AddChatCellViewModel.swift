@@ -10,16 +10,16 @@ import Foundation
 
 class AddChatCellViewModel: Equatable {
     let user: User
-    
+
     init(user: User) {
         self.user = user
     }
-    
+
     var title: String {
         return user.email ?? ""
     }
-    
-    static func ==(lhs: AddChatCellViewModel, rhs: AddChatCellViewModel) -> Bool {
+
+    static func == (lhs: AddChatCellViewModel, rhs: AddChatCellViewModel) -> Bool {
         return lhs.user == rhs.user
     }
 }

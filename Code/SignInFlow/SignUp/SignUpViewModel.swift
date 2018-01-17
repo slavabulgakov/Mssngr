@@ -10,11 +10,11 @@ import Foundation
 
 class SignUpViewModel {
     let appController: AppController
-    
+
     init(appController: AppController) {
         self.appController = appController
     }
-    
+
     func signUp(email: String, password: String) {
         appController.network?.signUp(email: email, password: password)
     }

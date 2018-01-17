@@ -116,7 +116,7 @@ class NetworkController {
         group.wait()
         return users
     }
-    
+
     var chatsQuery: DatabaseQuery? {
         guard let uid = Auth.auth().currentUser?.uid else { return nil }
         return self.reference.child("chats").queryOrdered(byChild: "users/\(uid)").queryEqual(toValue: true)
@@ -138,7 +138,7 @@ class NetworkController {
             }
         }
     }
-    
+
     func removeChatProducer() -> SignalProducer<Chat, NoError> {
         return SignalProducer<Chat, NoError> { [unowned self] observer, _ in
             self.chatsQuery?.observe(.childRemoved) { snapshot in
@@ -186,7 +186,7 @@ extension User {
 }
 
 extension BaseMappable {
-    static var firebaseIdKey : String {
+    static var firebaseIdKey: String {
         get {
             return "FirebaseIdKey"
         }
@@ -196,7 +196,7 @@ extension BaseMappable {
             return nil
         }
         json[Self.firebaseIdKey] = snapshot.key as Any
-        
+
         self.init(JSON: json)
     }
 }

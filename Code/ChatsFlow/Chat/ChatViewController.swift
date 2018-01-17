@@ -20,17 +20,17 @@ class ChatViewController: BaseChatViewController, Coordinated {
         }
     }
     let (viewDidLoadSignal, viewDidLoadObserver) = Signal<Void, NoError>.pipe()
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         super.chatItemsDecorator = ChatItemsDemoDecorator()
         viewDidLoadObserver.send(value: ())
     }
-    
+
     lazy private var baseMessageHandler: BaseMessageHandler = {
         return BaseMessageHandler(messageSender: self.viewModel!)
     }()
-    
+
     var chatInputPresenter: BasicChatInputBarPresenter?
     override func createChatInputView() -> UIView {
         let chatInputView = ChatInputBar.loadNib()
@@ -41,16 +41,16 @@ class ChatViewController: BaseChatViewController, Coordinated {
         chatInputView.maxCharactersCount = 1000
         return chatInputView
     }
-    
+
     override func createPresenterBuilders() -> [ChatItemType: [ChatItemPresenterBuilderProtocol]] {
-        
+
         let textMessagePresenter = TextMessagePresenterBuilder(
             viewModelBuilder: DemoTextMessageViewModelBuilder(),
             interactionHandler: DemoTextMessageHandler(baseHandler: self.baseMessageHandler)
         )
         textMessagePresenter.baseMessageStyle = BaseMessageCollectionViewCellAvatarStyle()
-        
-        
+
+
         return [
             DemoTextMessageModel.chatItemType: [
                 textMessagePresenter
@@ -59,13 +59,13 @@ class ChatViewController: BaseChatViewController, Coordinated {
             TimeSeparatorModel.chatItemType: [TimeSeparatorPresenterBuilder()]
         ]
     }
-    
+
     func createChatInputItems() -> [ChatInputItemProtocol] {
         var items = [ChatInputItemProtocol]()
         items.append(self.createTextInputItem())
         return items
     }
-    
+
     private func createTextInputItem() -> TextChatInputItem {
         let item = TextChatInputItem()
         item.textInputHandler = { [weak self] text in

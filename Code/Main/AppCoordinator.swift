@@ -11,54 +11,54 @@ import UIKit
 class AppCoordinator: Coordinator
 {
     var appController: AppController
-    
+
     var window: UIWindow
     var chatsCoordinator: ChatsCoordinator?
-    
+
     init(window: UIWindow) {
         self.window = window
         UIViewController.addCoordination()
         appController = AppController()
     }
-    
+
     func start() {
         guard let navigationController = self.window.rootViewController as? UINavigationController,
-        let viewController = navigationController.topViewController as? ChatsViewController else { return }
+            let viewController = navigationController.topViewController as? ChatsViewController else { return }
         chatsCoordinator = ChatsCoordinator(viewController: viewController, appController: appController)
         chatsCoordinator?.start()
     }
 }
 
 extension UIViewController {
-    
+
     class func addCoordination() {
         DispatchQueue.once(token: "com.mvvmcs.Mssngr") {
             let originalPerformSelector = #selector(UIViewController.prepare(for: sender:))
             let swizzledPerformSelector = #selector(swizzledPrepare(for: sender:))
-            
+
             method_exchangeImplementations(class_getInstanceMethod(UIViewController.self, originalPerformSelector)!,
-                                           class_getInstanceMethod(UIViewController.self, swizzledPerformSelector)!)
+                class_getInstanceMethod(UIViewController.self, swizzledPerformSelector)!)
         }
     }
-    
+
     @objc func swizzledPrepare(for segue: UIStoryboardSegue, sender: Any?) {
         defer {
             self.swizzledPrepare(for: segue, sender: self)
         }
-        
+
         guard let sourceViewController = segue.source as? Coordinated else {
             return
         }
-        
+
         sourceViewController.coordinationDelegate?.prepareForSegue(segue: segue)
-        
+
     }
 }
 
 public extension DispatchQueue {
-    
+
     private static var _onceTracker = [String]()
-    
+
     /**
      Executes a block of code, associated with a unique token, only once.  The code is thread safe and will
      only execute the code once even in the presence of multithreaded calls.
@@ -68,11 +68,11 @@ public extension DispatchQueue {
      */
     public class func once(token: String, block: () -> Void) {
         objc_sync_enter(self); defer { objc_sync_exit(self) }
-        
+
         if _onceTracker.contains(token) {
             return
         }
-        
+
         _onceTracker.append(token)
         block()
     }

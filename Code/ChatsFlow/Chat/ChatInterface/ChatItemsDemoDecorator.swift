@@ -43,7 +43,7 @@ final class ChatItemsDemoDecorator: ChatItemsDecoratorProtocol {
 
             let bottomMargin = self.separationAfterItem(chatItem, next: next)
             var showsTail = false
-            var additionalItems =  [DecoratedChatItem]()
+            var additionalItems = [DecoratedChatItem]()
 
             var addTimeSeparator = false
             if let currentMessage = chatItem as? MessageModelProtocol {
@@ -77,9 +77,9 @@ final class ChatItemsDemoDecorator: ChatItemsDecoratorProtocol {
                 DecoratedChatItem(
                     chatItem: chatItem,
                     decorationAttributes: ChatItemDecorationAttributes(bottomMargin: bottomMargin,
-                                                                       canShowTail: showsTail,
-                                                                       canShowAvatar: showsTail,
-                                                                       canShowFailedIcon: true)
+                        canShowTail: showsTail,
+                        canShowAvatar: showsTail,
+                        canShowFailedIcon: true)
                 )
             )
             decoratedChatItems.append(contentsOf: additionalItems)

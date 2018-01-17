@@ -29,7 +29,7 @@ public class DemoTextMessageModel: TextMessageModel<MessageModel> {
     public override init(messageModel: MessageModel, text: String) {
         super.init(messageModel: messageModel, text: text)
     }
-    
+
     public var status: MessageStatus {
         get {
             return self._messageModel.status
