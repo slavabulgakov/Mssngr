@@ -12,7 +12,6 @@ import Result
 import IGListKit
 
 class ChatsViewController: UIViewController, Coordinated {
-    let cellIdentifier = "ChatCellIdentifier"
     var viewModel: ChatsViewModel?
     var coordinationDelegate: CoordinationDelegate?
     let (viewDidLoadSignal, viewDidLoadObserver) = Signal<Void, NoError>.pipe()

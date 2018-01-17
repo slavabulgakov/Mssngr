@@ -39,6 +39,7 @@
 		DE776A98200BBA6700AC07CE /* LabelCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE776A97200BBA6700AC07CE /* LabelCell.swift */; };
 		DE776A9A200BBA7B00AC07CE /* LabelCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = DE776A99200BBA7B00AC07CE /* LabelCell.xib */; };
 		DE87BCC01FF010B5005670A9 /* Models.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE87BCBF1FF010B5005670A9 /* Models.swift */; };
+		DED6F3D4200F57E300819764 /* KeyboardListener.swift in Sources */ = {isa = PBXBuildFile; fileRef = DED6F3D3200F57E300819764 /* KeyboardListener.swift */; };
 		DEE87FD61FED0E550058D9F0 /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEE87FCE1FED0E550058D9F0 /* AppCoordinator.swift */; };
 		DEE87FD71FED0E550058D9F0 /* NetworkController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEE87FCF1FED0E550058D9F0 /* NetworkController.swift */; };
 		DEE87FD81FED0E550058D9F0 /* AppController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEE87FD01FED0E550058D9F0 /* AppController.swift */; };
@@ -87,6 +88,7 @@
 		DE776A99200BBA7B00AC07CE /* LabelCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LabelCell.xib; sourceTree = "<group>"; };
 		DE87BCBF1FF010B5005670A9 /* Models.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Models.swift; sourceTree = "<group>"; };
 		DEC8C56D1FD5A00B00717919 /* Mssngr.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Mssngr.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		DED6F3D3200F57E300819764 /* KeyboardListener.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardListener.swift; sourceTree = "<group>"; };
 		DEE87FCE1FED0E550058D9F0 /* AppCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppCoordinator.swift; sourceTree = "<group>"; };
 		DEE87FCF1FED0E550058D9F0 /* NetworkController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkController.swift; sourceTree = "<group>"; };
 		DEE87FD01FED0E550058D9F0 /* AppController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppController.swift; sourceTree = "<group>"; };
@@ -279,6 +281,7 @@
 				DE380C2D20011D2D00E0B609 /* ChatsFlow */,
 				DE380C2520011D2D00E0B609 /* SignInFlow */,
 				DEE87FCD1FED0E550058D9F0 /* Main */,
+				DED6F3D3200F57E300819764 /* KeyboardListener.swift */,
 			);
 			path = Code;
 			sourceTree = "<group>";
@@ -467,6 +470,7 @@
 				DE380C6720011D2D00E0B609 /* ChatViewModel.swift in Sources */,
 				DEE87FDA1FED0E550058D9F0 /* Coordinator.swift in Sources */,
 				DE380C5C20011D2D00E0B609 /* BaseMessageHandler.swift in Sources */,
+				DED6F3D4200F57E300819764 /* KeyboardListener.swift in Sources */,
 				DE776A95200A3CF400AC07CE /* ChatsSectionController.swift in Sources */,
 				DE380C5320011D2D00E0B609 /* SignUpViewController.swift in Sources */,
 				DE380C5420011D2D00E0B609 /* SignUpViewModel.swift in Sources */,

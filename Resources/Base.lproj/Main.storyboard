@@ -113,25 +113,20 @@
                         <constraints>
                             <constraint firstItem="krp-Xb-KcQ" firstAttribute="top" secondItem="f6W-r9-daS" secondAttribute="top" id="Awh-4f-Yfd"/>
                             <constraint firstItem="krp-Xb-KcQ" firstAttribute="leading" secondItem="oWs-Zc-Pdm" secondAttribute="leading" id="efQ-hY-s9F"/>
-                            <constraint firstItem="krp-Xb-KcQ" firstAttribute="bottom" secondItem="oWs-Zc-Pdm" secondAttribute="bottom" id="mfA-SS-o8x"/>
                             <constraint firstItem="krp-Xb-KcQ" firstAttribute="trailing" secondItem="oWs-Zc-Pdm" secondAttribute="trailing" id="yNA-ew-gyZ"/>
+                            <constraint firstItem="krp-Xb-KcQ" firstAttribute="bottom" secondItem="oWs-Zc-Pdm" secondAttribute="bottom" id="zgc-Yc-2t4"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="oWs-Zc-Pdm"/>
                     </view>
-                    <navigationItem key="navigationItem" id="GqG-dX-CKV">
-                        <barButtonItem key="rightBarButtonItem" title="Chat" id="RwU-9B-1cm">
-                            <connections>
-                                <segue destination="aaq-uu-76s" kind="show" id="yvJ-3g-TUL"/>
-                            </connections>
-                        </barButtonItem>
-                    </navigationItem>
+                    <navigationItem key="navigationItem" id="GqG-dX-CKV"/>
                     <connections>
                         <outlet property="tableView" destination="krp-Xb-KcQ" id="z53-jt-4Tf"/>
+                        <segue destination="aaq-uu-76s" kind="show" identifier="AddChatToChat" id="lCe-Kc-AYY"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="GpY-DT-sgh" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="998" y="1145"/>
+            <point key="canvasLocation" x="997.60000000000002" y="1144.6776611694154"/>
         </scene>
         <!--Chat View Controller-->
         <scene sceneID="WqK-rC-34R">
@@ -295,6 +290,6 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="Rt9-uN-Tax"/>
+        <segue reference="lCe-Kc-AYY"/>
     </inferredMetricsTieBreakers>
 </document>

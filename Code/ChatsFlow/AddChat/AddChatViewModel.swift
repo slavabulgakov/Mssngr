@@ -42,6 +42,11 @@ class AddChatViewModel {
     }
     
     func select(index: Int) {
-        _users.value.insert(_cells[index].user)
+        let user = _cells[index].user
+        if _users.value.contains(user) {
+            _users.value.remove(user)
+            return
+        }
+        _users.value.insert(user)
     }
 }
