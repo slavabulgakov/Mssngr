@@ -35,7 +35,7 @@ class ChatsViewModel {
         return _chats
     }
 
-    func select(index: Int) {
-        chatSelectObserver.send(value: _chats[index].chat)
+    func select(cellModel: ChatsCellViewModel) {
+        chatSelectObserver.send(value: cellModel.chat)
     }
 }

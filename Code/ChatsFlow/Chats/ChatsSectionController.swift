@@ -37,6 +37,7 @@ class ChatsSectionController: ListSectionController {
     }
 
     override func didSelectItem(at index: Int) {
-        chatsViewModel?.select(index: index)
+        guard let c = cellViewModel else { return }
+        chatsViewModel?.select(cellModel: c)
     }
 }
