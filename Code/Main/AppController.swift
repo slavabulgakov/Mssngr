@@ -12,6 +12,6 @@ class AppController {
     var network: NetworkController?
 
     func load() {
-        network = NetworkController()
+        network = NetworkController(service: Service())
     }
 }

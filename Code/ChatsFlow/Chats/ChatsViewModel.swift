@@ -31,14 +31,6 @@ class ChatsViewModel {
         return SignalProducer.merge(remove, add).debounce(0.1, on: QueueScheduler.main).map { _ in return () }
     }
 
-    var numberOfRows: Int {
-        return _chats.count
-    }
-
-    func item(atIndex index: Int) -> ChatsCellViewModel {
-        return _chats[index]
-    }
-
     func items() -> [ChatsCellViewModel] {
         return _chats
     }

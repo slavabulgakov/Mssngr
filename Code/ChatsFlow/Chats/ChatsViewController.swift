@@ -8,6 +8,7 @@
 
 import UIKit
 import ReactiveSwift
+import ReactiveCocoa
 import Result
 import IGListKit
 
@@ -39,7 +40,7 @@ extension ChatsViewController: ListAdapterDataSource {
     func listAdapter(_ listAdapter: ListAdapter, sectionControllerFor object: Any) -> ListSectionController {
         return ChatsSectionController(viewModel: viewModel)
     }
-
+    
     func emptyView(for listAdapter: ListAdapter) -> UIView? {
         return nil
     }

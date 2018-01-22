@@ -39,6 +39,8 @@
 		DE380C6C20011D2D00E0B609 /* ChatsCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE380C4920011D2D00E0B609 /* ChatsCellViewModel.swift */; };
 		DE380C6D20011D2D00E0B609 /* ChatsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE380C4A20011D2D00E0B609 /* ChatsViewModel.swift */; };
 		DE380C6E20011D2D00E0B609 /* ChatsCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE380C4B20011D2D00E0B609 /* ChatsCoordinator.swift */; };
+		DE532F672014F41E004E258D /* ServiceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE532F662014F41E004E258D /* ServiceProtocol.swift */; };
+		DE532F692014F442004E258D /* Service.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE532F682014F442004E258D /* Service.swift */; };
 		DE776A95200A3CF400AC07CE /* ChatsSectionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE776A94200A3CF400AC07CE /* ChatsSectionController.swift */; };
 		DE776A98200BBA6700AC07CE /* LabelCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE776A97200BBA6700AC07CE /* LabelCell.swift */; };
 		DE776A9A200BBA7B00AC07CE /* LabelCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = DE776A99200BBA7B00AC07CE /* LabelCell.xib */; };
@@ -89,6 +91,8 @@
 		DE380C4920011D2D00E0B609 /* ChatsCellViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatsCellViewModel.swift; sourceTree = "<group>"; };
 		DE380C4A20011D2D00E0B609 /* ChatsViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatsViewModel.swift; sourceTree = "<group>"; };
 		DE380C4B20011D2D00E0B609 /* ChatsCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatsCoordinator.swift; sourceTree = "<group>"; };
+		DE532F662014F41E004E258D /* ServiceProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceProtocol.swift; sourceTree = "<group>"; };
+		DE532F682014F442004E258D /* Service.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Service.swift; sourceTree = "<group>"; };
 		DE776A94200A3CF400AC07CE /* ChatsSectionController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatsSectionController.swift; sourceTree = "<group>"; };
 		DE776A97200BBA6700AC07CE /* LabelCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LabelCell.swift; sourceTree = "<group>"; };
 		DE776A99200BBA7B00AC07CE /* LabelCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LabelCell.xib; sourceTree = "<group>"; };
@@ -259,6 +263,16 @@
 			path = Chats;
 			sourceTree = "<group>";
 		};
+		DE532F6C2014F4C2004E258D /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				DEE87FCF1FED0E550058D9F0 /* NetworkController.swift */,
+				DE532F662014F41E004E258D /* ServiceProtocol.swift */,
+				DE532F682014F442004E258D /* Service.swift */,
+			);
+			path = Network;
+			sourceTree = "<group>";
+		};
 		DE776A96200BBA6700AC07CE /* LabelCell */ = {
 			isa = PBXGroup;
 			children = (
@@ -290,6 +304,7 @@
 		DEE87FC81FED0E550058D9F0 /* Code */ = {
 			isa = PBXGroup;
 			children = (
+				DE532F6C2014F4C2004E258D /* Network */,
 				DE776A96200BBA6700AC07CE /* LabelCell */,
 				DE380C2D20011D2D00E0B609 /* ChatsFlow */,
 				DE380C2520011D2D00E0B609 /* SignInFlow */,
@@ -303,7 +318,6 @@
 			isa = PBXGroup;
 			children = (
 				DEE87FCE1FED0E550058D9F0 /* AppCoordinator.swift */,
-				DEE87FCF1FED0E550058D9F0 /* NetworkController.swift */,
 				DEE87FD01FED0E550058D9F0 /* AppController.swift */,
 				DEE87FD11FED0E550058D9F0 /* AppDelegate.swift */,
 				DEE87FD21FED0E550058D9F0 /* Coordinator.swift */,
@@ -510,6 +524,7 @@
 				DEE87FD61FED0E550058D9F0 /* AppCoordinator.swift in Sources */,
 				DE380C5520011D2D00E0B609 /* SignInViewModel.swift in Sources */,
 				DE380C6C20011D2D00E0B609 /* ChatsCellViewModel.swift in Sources */,
+				DE532F692014F442004E258D /* Service.swift in Sources */,
 				DEE87FD91FED0E550058D9F0 /* AppDelegate.swift in Sources */,
 				DE380C5720011D2D00E0B609 /* SignInCoordinator.swift in Sources */,
 				DE380C5D20011D2D00E0B609 /* SendingStatusPresenter.swift in Sources */,
@@ -517,6 +532,7 @@
 				DE380C6D20011D2D00E0B609 /* ChatsViewModel.swift in Sources */,
 				DEE87FD81FED0E550058D9F0 /* AppController.swift in Sources */,
 				DE380C6520011D2D00E0B609 /* DemoTextMessageViewModel.swift in Sources */,
+				DE532F672014F41E004E258D /* ServiceProtocol.swift in Sources */,
 				DE380C6820011D2D00E0B609 /* AddChatCellViewModel.swift in Sources */,
 				DE380C5E20011D2D00E0B609 /* SendingStatusCollectionViewCell.swift in Sources */,
 				DE380C5620011D2D00E0B609 /* SignInViewController.swift in Sources */,
